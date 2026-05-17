@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Hammamet Appartement Rental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --navy:#0f2744;--navy-d:#081829;--navy-m:#1a3a5c;
+  --gold:#bf9b57;--gold-l:#d4b47a;--gold-pale:rgba(191,155,87,.12);
+  --teal:#3a8fa3;--cream:#f7f4ef;--sand:#e8ddd0;
+  --white:#fff;--dark:#1a1a1a;--mid:#4a5568;
+  --border:#ddd8d0;--red:#dc2626;--green:#16a34a;--orange:#ea580c;
+  --shadow:0 4px 30px rgba(15,39,68,.08);
+  --shadow-h:0 12px 40px rgba(15,39,68,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--navy-d);color:var(--dark);min-height:100vh}
+h1,h2,h3,h4{font-family:'Cormorant Garant',serif}
+button,input,select,textarea{font-family:'Jost',sans-serif}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ── LOGIN SCREEN ── */
+#login-screen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse 80% 60% at 20% 80%,rgba(58,143,163,.2) 0%,transparent 60%),
+             radial-gradient(ellipse 60% 80% at 80% 20%,rgba(191,155,87,.12) 0%,transparent 55%),
+             linear-gradient(160deg,#040e1a 0%,#0f2744 50%,#0d2f3e 100%);
+  padding:2rem;
+}
+.login-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(191,155,87,.2);
+  border-radius:12px;
+  padding:3rem 2.5rem;
+  width:100%;max-width:400px;
+  backdrop-filter:blur(20px);
+  box-shadow:0 24px 60px rgba(0,0,0,.4);
+}
+.login-logo{text-align:center;margin-bottom:2.5rem}
+.login-logo span{display:block;font-family:'Cormorant Garant',serif;font-size:1.1rem;color:rgba(255,255,255,.4);letter-spacing:.15em;text-transform:uppercase;font-weight:400;margin-bottom:.5rem}
+.login-logo h1{font-size:1.9rem;color:#fff;font-weight:600;line-height:1.2}
+.login-logo h1 em{color:var(--gold);font-style:italic}
+.login-logo .lock-icon{width:56px;height:56px;background:rgba(191,155,87,.12);border:1px solid rgba(191,155,87,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--gold);font-size:1.3rem}
+.lg{display:flex;flex-direction:column;gap:.9rem}
+.lg label{display:block;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.3rem}
+.lg input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:.8rem 1rem;font-size:.9rem;color:#fff;outline:none;transition:all .2s}
+.lg input:focus{border-color:rgba(191,155,87,.5);background:rgba(255,255,255,.09)}
+.lg input::placeholder{color:rgba(255,255,255,.25)}
+.btn-login{background:var(--gold);color:#fff;border:none;padding:.9rem;border-radius:5px;font-size:.88rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s;width:100%;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.btn-login:hover{background:var(--gold-l);transform:translateY(-1px)}
+#login-err{color:#f87171;font-size:.78rem;text-align:center;display:none;padding:.5rem;background:rgba(220,38,38,.1);border-radius:4px}
+.login-hint{text-align:center;font-size:.72rem;color:rgba(255,255,255,.2);margin-top:.5rem}
+
+/* ── ADMIN LAYOUT ── */
+#admin-app{display:none;min-height:100vh;background:var(--cream)}
+.adm-topbar{
+  background:var(--navy-d);border-bottom:1px solid rgba(191,155,87,.15);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 2rem;position:sticky;top:0;z-index:100;
+}
+.adm-brand{display:flex;align-items:center;gap:.9rem}
+.adm-brand .adm-logo{font-family:'Cormorant Garant',serif;font-size:1.2rem;color:#fff;font-weight:600}
+.adm-brand .adm-logo em{color:var(--gold);font-style:normal}
+.adm-brand .adm-tag{background:rgba(191,155,87,.15);border:1px solid rgba(191,155,87,.3);color:var(--gold-l);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px}
+.adm-topbar-r{display:flex;align-items:center;gap:1rem}
+.adm-user{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.5);font-size:.78rem}
+.adm-user i{color:var(--gold)}
+.btn-logout{background:none;border:1px solid rgba(220,38,38,.4);color:#f87171;padding:.35rem .9rem;border-radius:3px;font-size:.72rem;cursor:pointer;transition:all .2s;letter-spacing:.05em}
+.btn-logout:hover{background:rgba(220,38,38,.1)}
+.btn-back-site{background:none;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);padding:.35rem .9rem;border-radius:3px;font-size:.72rem;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.btn-back-site:hover{border-color:rgba(255,255,255,.35);color:#fff}
+
+.adm-container{max-width:1100px;margin:0 auto;padding:2rem}
+
+/* Stats cards */
+.adm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.adm-stat{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;border-left:3px solid var(--gold)}
+.adm-stat .n{font-family:'Cormorant Garant',serif;font-size:1.9rem;font-weight:600;color:var(--navy);display:block;line-height:1}
+.adm-stat .l{font-size:.7rem;color:var(--mid);text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem;display:block}
+.adm-stat.red{border-left-color:var(--red)}.adm-stat.red .n{color:var(--red)}
+.adm-stat.orange{border-left-color:var(--orange)}.adm-stat.orange .n{color:var(--orange)}
+.adm-stat.green{border-left-color:var(--green)}.adm-stat.green .n{color:var(--green)}
+
+/* Section titles */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;gap:1rem}
+.sec-hdr h2{font-size:1.3rem;color:var(--navy);font-weight:600;display:flex;align-items:center;gap:.5rem}
+.sec-hdr h2 i{color:var(--gold);font-size:1rem}
+
+/* Apt tabs */
+.apt-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.apt-tab{padding:.5rem 1.4rem;border:1px solid var(--border);border-radius:4px;background:#fff;cursor:pointer;font-size:.8rem;font-weight:600;color:var(--mid);transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:.1rem}
+.apt-tab .apt-score{font-size:.6rem;color:var(--gold)}
+.apt-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.apt-tab.active .apt-score{color:var(--gold-l)}
+
+/* Main grid */
+.adm-main{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+
+/* Card */
+.adm-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.4rem}
+.adm-card-title{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--mid);margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+.adm-card-title i{color:var(--teal)}
+
+/* Price */
+.price-input-row{display:flex;align-items:center;gap:.8rem}
+.price-input-row input{width:120px;padding:.5rem .8rem;border:1px solid var(--border);border-radius:4px;font-size:.95rem;font-weight:600;color:var(--navy);text-align:center;outline:none;transition:border-color .2s}
+.price-input-row input:focus{border-color:var(--navy)}
+.price-input-row .price-suffix{font-size:.78rem;color:var(--mid)}
+.peak-note{font-size:.72rem;color:var(--mid);margin-top:.6rem;padding:.5rem .8rem;background:var(--cream);border-radius:4px}
+
+/* Calendar */
+.cal-nav-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}
+.cal-nav-btn{background:none;border:1px solid var(--border);width:30px;height:30px;border-radius:50%;cursor:pointer;color:var(--dark);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .2s}
+.cal-nav-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.cal-month-title{font-family:'Cormorant Garant',serif;font-size:1.1rem;font-weight:600;color:var(--navy)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-dh{text-align:center;font-size:.58rem;font-weight:600;color:var(--mid);letter-spacing:.08em;padding:.4rem 0}
+.adc{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid transparent;border-radius:4px;cursor:pointer;font-size:.7rem;font-weight:600;transition:background .1s,border-color .1s;position:relative}
+.adc:hover:not(.past){border-color:var(--navy)!important;background:#f0f7ff}
+.adc.past{opacity:.25;pointer-events:none}
+.adc.free{background:#fff;border-color:var(--border);color:var(--mid)}
+.adc.avail{background:#f0fdf4;border-color:#86efac;color:var(--green)}
+.adc.booked{background:#fef2f2;border-color:#fca5a5;color:var(--red)}
+.adc.pending{background:#fff7ed;border-color:#fed7aa;color:var(--orange)}
+.adc.today{outline:2px solid var(--gold);outline-offset:1px}
+.adc .ap{font-size:.48rem;opacity:.8;margin-top:1px;line-height:1}
+.cal-legend{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:.8rem;font-size:.7rem;color:var(--mid)}
+.cl-item{display:flex;align-items:center;gap:.3rem}
+.cl-dot{width:10px;height:10px;border-radius:2px}
+.cl-dot.f{background:#fff;border:1px solid var(--border)}
+.cl-dot.a{background:#f0fdf4;border:1px solid #86efac}
+.cl-dot.b{background:#fef2f2;border:1px solid #fca5a5}
+.cl-dot.p{background:#fff7ed;border:1px solid #fed7aa}
+.adm-hint{font-size:.72rem;color:var(--mid);margin-bottom:.7rem;background:var(--cream);padding:.5rem .8rem;border-radius:4px}
+
+/* Save */
+.save-row{display:flex;align-items:center;gap:.8rem;margin-top:1rem}
+.save-btn{background:var(--gold);color:#fff;border:none;padding:.6rem 1.5rem;border-radius:4px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.4rem}
+.save-btn:hover{background:var(--navy)}
+#save-msg{font-size:.78rem;color:var(--green);display:none}
+
+/* Pending bookings */
+.pending-wrap{margin-bottom:1.5rem}
+.pb-item{background:#fff;border:1px solid #fed7aa;border-left:3px solid var(--orange);border-radius:6px;padding:.9rem 1.1rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.pb-item+.pb-item{margin-top:.6rem}
+.pb-apt{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.3rem}
+.pb-name{font-size:.9rem;font-weight:600;color:var(--dark)}
+.pb-details{font-size:.78rem;color:var(--mid);margin-top:.2rem;line-height:1.6}
+.pb-btns{display:flex;gap:.5rem;flex-shrink:0;align-self:center}
+.pb-ok{background:var(--green);color:#fff;border:none;padding:.4rem .9rem;border-radius:3px;font-size:.75rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.3rem;transition:opacity .2s}
+.pb-ok:hover{opacity:.85}
+.pb-rej{background:var(--red);color:#fff;border:none;padding:.4rem .9rem;border-radius:3px;font-size:.75rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.3rem;transition:opacity .2s}
+.pb-rej:hover{opacity:.85}
+.empty-state{text-align:center;padding:2rem;color:var(--mid);font-size:.85rem;background:#fff;border:1px solid var(--border);border-radius:6px}
+.empty-state i{font-size:1.8rem;display:block;margin-bottom:.5rem;color:var(--border)}
+
+/* Guide */
+.guide-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:1.5rem}
+.guide-header{padding:1rem 1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .2s}
+.guide-header:hover{background:var(--cream)}
+.guide-header h3{font-size:1rem;color:var(--navy);font-weight:600;display:flex;align-items:center;gap:.5rem}
+.guide-header i.arrow{transition:transform .3s;color:var(--mid)}
+.guide-body{display:none;padding:0 1.4rem 1.4rem;border-top:1px solid var(--border)}
+.guide-body.open{display:block}
+.guide-step{display:flex;gap:.8rem;padding:.65rem 0;border-bottom:1px solid var(--border)}
+.guide-step:last-child{border-bottom:none}
+.guide-num{width:22px;height:22px;min-width:22px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;margin-top:.1rem}
+.guide-text strong{display:block;font-size:.82rem;color:var(--dark);margin-bottom:.15rem}
+.guide-text span{font-size:.78rem;color:var(--mid);line-height:1.6}
+
+/* Settings */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.setting-item{background:var(--cream);border-radius:6px;padding:.9rem 1rem}
+.setting-label{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--mid);margin-bottom:.3rem}
+.setting-val{font-size:.9rem;color:var(--dark);font-weight:500;display:flex;align-items:center;gap:.4rem}
+.setting-val i{color:var(--gold);font-size:.8rem}
+.setting-note{font-size:.68rem;color:var(--mid);margin-top:.3rem;line-height:1.5}
+
+
+/* ── Image Management ── */
+.img-mgmt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.8rem;margin-bottom:1rem}
+.img-thumb-wrap{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--cream);border:1px solid var(--border)}
+.img-thumb-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.img-thumb-del{position:absolute;top:.3rem;right:.3rem;background:rgba(220,38,38,.85);color:#fff;border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:.65rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.img-thumb-del:hover{background:var(--red)}
+.img-thumb-main{position:absolute;bottom:.3rem;left:.3rem;background:rgba(15,39,68,.75);color:var(--gold-l);font-size:.55rem;font-weight:700;padding:.1rem .35rem;border-radius:2px;letter-spacing:.08em;text-transform:uppercase}
+.upload-drop-zone{border:2px dashed var(--border);border-radius:8px;padding:2rem 1rem;text-align:center;cursor:pointer;transition:all .2s;background:#fff;position:relative}
+.upload-drop-zone:hover,.upload-drop-zone.dragover{border-color:var(--gold);background:var(--gold-pale)}
+.upload-drop-zone i{font-size:2rem;color:var(--border);display:block;margin-bottom:.5rem}
+.upload-drop-zone p{font-size:.8rem;color:var(--mid);margin-bottom:.4rem}
+.upload-drop-zone small{font-size:.68rem;color:var(--mid);opacity:.7}
+.upload-drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.cld-setup-banner{background:linear-gradient(135deg,#f7f4ef,#fff3d0);border:1px solid rgba(191,155,87,.3);border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:.8rem}
+.cld-setup-banner i{color:var(--gold);font-size:1.2rem;margin-top:.1rem;flex-shrink:0}
+.cld-setup-banner p{font-size:.78rem;color:var(--mid);line-height:1.6;margin:0}
+.cld-setup-banner strong{color:var(--dark)}
+.cld-inputs{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.8rem}
+.cld-fg label{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--mid);display:block;margin-bottom:.25rem}
+.cld-fg input{width:100%;padding:.5rem .75rem;border:1px solid var(--border);border-radius:4px;font-size:.83rem;font-family:'Jost',sans-serif;outline:none;transition:border-color .2s}
+.cld-fg input:focus{border-color:var(--navy)}
+.upload-progress{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin:.5rem 0;display:none}
+.upload-progress-bar{height:100%;background:var(--gold);border-radius:2px;transition:width .3s}
+.img-count-badge{background:var(--navy);color:#fff;font-size:.62rem;font-weight:700;padding:.12rem .5rem;border-radius:10px;margin-left:.4rem}
+
+
+/* ── All Reservations Section ── */
+.res-filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.res-filter-btn{border:1px solid var(--border);background:#fff;padding:.35rem .9rem;border-radius:20px;font-size:.75rem;font-weight:600;color:var(--mid);cursor:pointer;transition:all .2s;font-family:'Jost',sans-serif}
+.res-filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.res-filter-btn.f-pending.active{background:var(--orange);border-color:var(--orange)}
+.res-filter-btn.f-confirmed.active{background:var(--green);border-color:var(--green)}
+.res-filter-btn.f-cancelled.active{background:#6b7280;border-color:#6b7280}
+.adm-res-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.7rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;transition:box-shadow .2s}
+.adm-res-card:hover{box-shadow:0 4px 16px rgba(15,39,68,.08)}
+.adm-res-card.pending{border-left:3px solid var(--orange)}
+.adm-res-card.confirmed{border-left:3px solid var(--green)}
+.adm-res-card.cancelled{border-left:3px solid #9ca3af;opacity:.7}
+.adm-res-apt{font-family:'Cormorant Garant',serif;font-size:1.05rem;color:var(--navy);font-weight:600;margin-bottom:.2rem}
+.adm-res-client{font-size:.82rem;color:var(--dark);font-weight:500;margin-bottom:.2rem}
+.adm-res-detail{font-size:.76rem;color:var(--mid);line-height:1.7}
+.adm-res-status{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .65rem;border-radius:20px;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.adm-res-status.pending{background:#fff7ed;color:var(--orange)}
+.adm-res-status.confirmed{background:#f0fdf4;color:var(--green)}
+.adm-res-status.cancelled{background:#f3f4f6;color:#6b7280}
+.adm-res-actions{display:flex;flex-direction:column;gap:.4rem;align-items:flex-end;flex-shrink:0}
+.btn-adm-cancel{background:none;border:1px solid #fca5a5;color:var(--red);padding:.35rem .85rem;border-radius:3px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s;white-space:nowrap}
+.btn-adm-cancel:hover{background:#fef2f2}
+.btn-adm-confirm-small{background:var(--green);color:#fff;border:none;padding:.35rem .85rem;border-radius:3px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;transition:opacity .2s;white-space:nowrap}
+.btn-adm-confirm-small:hover{opacity:.85}
+.res-search{width:100%;padding:.6rem .9rem;border:1px solid var(--border);border-radius:6px;font-size:.85rem;font-family:'Jost',sans-serif;outline:none;margin-bottom:.8rem;transition:border-color .2s}
+.res-search:focus{border-color:var(--navy)}
+
+
+/* ── Users & Listings Management ── */
+.adm-section-tabs{display:flex;gap:.4rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border);padding-bottom:0}
+.ast{padding:.6rem 1.3rem;border:none;background:transparent;font-size:.8rem;font-weight:600;color:var(--mid);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;font-family:'Jost',sans-serif;display:flex;align-items:center;gap:.4rem}
+.ast.active{color:var(--navy);border-bottom-color:var(--gold)}
+.ast i{font-size:.82rem}
+.ast-badge{background:var(--navy);color:#fff;font-size:.58rem;font-weight:700;padding:.1rem .45rem;border-radius:10px;margin-left:.2rem}
+
+/* User cards */
+.user-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem}
+.user-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.2rem;display:flex;flex-direction:column;gap:.8rem;transition:box-shadow .2s}
+.user-card:hover{box-shadow:0 4px 16px rgba(15,39,68,.08)}
+.user-card.partner{border-left:3px solid var(--teal)}
+.user-card.admin-role{border-left:3px solid var(--gold)}
+.uc-top{display:flex;align-items:center;gap:.9rem}
+.uc-avatar{width:42px;height:42px;min-width:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;font-family:'Cormorant Garant',serif}
+.uc-avatar.u{background:rgba(58,143,163,.12);color:var(--teal)}
+.uc-avatar.p{background:rgba(191,155,87,.15);color:var(--gold)}
+.uc-avatar.a{background:rgba(15,39,68,.1);color:var(--navy)}
+.uc-name{font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:.1rem}
+.uc-email{font-size:.75rem;color:var(--mid)}
+.uc-role{display:inline-flex;align-items:center;gap:.3rem;font-size:.65rem;font-weight:700;padding:.18rem .6rem;border-radius:20px;text-transform:uppercase;letter-spacing:.07em}
+.uc-role.user{background:#e0f2fe;color:#0369a1}
+.uc-role.partner{background:rgba(191,155,87,.12);color:#92400e}
+.uc-role.admin-role{background:rgba(15,39,68,.08);color:var(--navy)}
+.uc-details{display:flex;flex-direction:column;gap:.3rem;font-size:.78rem;color:var(--mid)}
+.uc-details span{display:flex;align-items:center;gap:.45rem}
+.uc-details i{color:var(--gold);width:13px;text-align:center;font-size:.72rem}
+.uc-actions{display:flex;gap:.5rem;border-top:1px solid var(--border);padding-top:.8rem}
+.btn-role-change{flex:1;background:var(--cream);border:1px solid var(--border);color:var(--mid);padding:.4rem .7rem;border-radius:3px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s}
+.btn-role-change:hover{border-color:var(--teal);color:var(--teal)}
+.btn-del-user{background:none;border:1px solid #fca5a5;color:var(--red);padding:.4rem .8rem;border-radius:3px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;transition:background .2s}
+.btn-del-user:hover{background:#fef2f2}
+.pw-note{background:#fef9ed;border:1px solid #fde68a;border-radius:6px;padding:.65rem .9rem;font-size:.75rem;color:#92400e;display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+
+/* Listing cards */
+.listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.listing-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:box-shadow .2s}
+.listing-card:hover{box-shadow:0 4px 16px rgba(15,39,68,.08)}
+.listing-img{height:140px;background:linear-gradient(135deg,var(--navy-m),var(--teal));position:relative;overflow:hidden}
+.listing-img img{width:100%;height:100%;object-fit:cover}
+.listing-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font-size:1.8rem}
+.listing-status{position:absolute;top:.6rem;right:.6rem;font-size:.62rem;font-weight:700;padding:.2rem .65rem;border-radius:2px;text-transform:uppercase}
+.listing-status.active{background:var(--green);color:#fff}
+.listing-status.inactive{background:#6b7280;color:#fff}
+.listing-type{position:absolute;top:.6rem;left:.6rem;background:var(--teal);color:#fff;font-size:.6rem;font-weight:700;padding:.2rem .6rem;border-radius:2px;text-transform:uppercase;letter-spacing:.07em}
+.listing-body{padding:1rem}
+.listing-title{font-family:'Cormorant Garant',serif;font-size:1.05rem;color:var(--navy);font-weight:600;margin-bottom:.2rem}
+.listing-host{font-size:.75rem;color:var(--mid);display:flex;align-items:center;gap:.3rem;margin-bottom:.5rem}
+.listing-host i{color:var(--teal);font-size:.68rem}
+.listing-meta{display:flex;gap:.7rem;font-size:.74rem;color:var(--mid);margin-bottom:.6rem}
+.listing-price{font-family:'Cormorant Garant',serif;font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:.8rem}
+.listing-price .per{font-size:.7rem;color:var(--mid);font-family:'Jost',sans-serif;font-weight:400}
+.listing-actions{display:flex;gap:.5rem;border-top:1px solid var(--border);padding-top:.8rem}
+.btn-toggle-listing{flex:1;background:var(--cream);border:1px solid var(--border);color:var(--mid);padding:.42rem .7rem;border-radius:3px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s}
+.btn-toggle-listing:hover{border-color:var(--teal);color:var(--teal)}
+.btn-del-listing{background:none;border:1px solid #fca5a5;color:var(--red);padding:.42rem .8rem;border-radius:3px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;transition:background .2s}
+.btn-del-listing:hover{background:#fef2f2}
+.usr-search{width:100%;padding:.6rem .9rem;border:1px solid var(--border);border-radius:6px;font-size:.85rem;font-family:'Jost',sans-serif;outline:none;margin-bottom:.9rem;background:#fff;color:var(--dark);transition:border-color .2s}
+.usr-search:focus{border-color:var(--navy)}
+
+/* Responsive */
+@media(max-width:800px){
+  .adm-stats{grid-template-columns:repeat(2,1fr)}
+  .adm-main{grid-template-columns:1fr}
+  .settings-grid{grid-template-columns:1fr}
+  .adm-topbar{padding:.8rem 1rem}
+  .adm-container{padding:1rem}
+}
+@media(max-width:500px){
+  .adm-stats{grid-template-columns:repeat(2,1fr)}
+  .apt-tabs{flex-wrap:wrap}
+}
+</style>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<!-- ══════════════ LOGIN ══════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="lock-icon"><i class="fas fa-lock"></i></div>
+      <span>Espace Administrateur</span>
+      <h1>Hammamet <em>Rental</em></h1>
+    </div>
+    <div class="lg">
+      <div>
+        <label>Mot de passe</label>
+        <input type="password" id="pw-input" placeholder="••••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="btn-login" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Se connecter</button>
+      <div id="login-err">❌ Mot de passe incorrect. Réessayez.</div>
+      <div class="login-hint">Mot de passe par défaut : hammamet2025</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ADMIN APP ══════════════ -->
+<div id="admin-app">
+
+  <!-- Topbar -->
+  <div class="adm-topbar">
+    <div class="adm-brand">
+      <span class="adm-logo">Hammamet <em>Rental</em></span>
+      <span class="adm-tag">Admin</span>
+    </div>
+    <div class="adm-topbar-r">
+      <div class="adm-user"><i class="fas fa-user-circle"></i> Administrateur</div>
+      <a href="index.html" class="btn-back-site"><i class="fas fa-external-link-alt"></i> Voir le site</a>
+      <button class="btn-logout" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+    </div>
+  </div>
+
+  <div class="adm-container">
+
+    <!-- Stats -->
+    <div class="adm-stats" id="adm-stats">
+      <div class="adm-stat"><span class="n" id="st-total">0</span><span class="l">Réservations totales</span></div>
+      <div class="adm-stat orange"><span class="n" id="st-pending">0</span><span class="l">En attente</span></div>
+      <div class="adm-stat red"><span class="n" id="st-booked">0</span><span class="l">Nuits réservées</span></div>
+      <div class="adm-stat green"><span class="n" id="st-revenue">0</span><span class="l">TND total estimé</span></div>
+    </div>
+
+    <!-- Pending bookings -->
+    <div class="pending-wrap">
+      <div class="sec-hdr">
+        <h2><i class="fas fa-inbox"></i> Demandes en attente</h2>
+        <span id="pending-badge" style="background:var(--orange);color:#fff;padding:.2rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;display:none"></span>
+      </div>
+      <div id="pending-list"></div>
+    </div>
+
+    <!-- Apt tabs -->
+    <div class="sec-hdr">
+      <h2><i class="fas fa-building"></i> Gestion par appartement</h2>
+    </div>
+    <div class="apt-tabs">
+      <button class="apt-tab active" onclick="swApt(0)">
+        <span>Apt 1 — Cosy</span>
+        <span class="apt-score">★ 9.8</span>
+      </button>
+      <button class="apt-tab" onclick="swApt(1)">
+        <span>Apt 2 — 2 Chambres</span>
+        <span class="apt-score">★ 9.6</span>
+      </button>
+      <button class="apt-tab" onclick="swApt(2)">
+        <span>Apt 3 — 3 Chambres</span>
+        <span class="apt-score">★ 9.7</span>
+      </button>
+    </div>
+
+    <!-- Main grid: pricing + calendar -->
+    <div class="adm-main">
+
+      <!-- Pricing -->
+      <div class="adm-card">
+        <div class="adm-card-title"><i class="fas fa-tag"></i> Tarification</div>
+        <div style="margin-bottom:1.2rem">
+          <div style="font-size:.78rem;color:var(--mid);margin-bottom:.5rem">Prix de base (TND / nuit)</div>
+          <div class="price-input-row">
+            <input type="number" id="base-price" placeholder="ex: 200" oninput="saveBase()">
+            <span class="price-suffix">TND / nuit</span>
+          </div>
+          <div class="peak-note"><i class="fas fa-sun" style="color:var(--gold)"></i> Juillet–Août : <strong>×1.5</strong> automatiquement (modifiable dans le code)</div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:1rem;margin-top:.5rem">
+          <div style="font-size:.78rem;color:var(--mid);margin-bottom:.7rem">Prix actuel affiché</div>
+          <div style="display:flex;gap:1rem">
+            <div style="flex:1;background:var(--cream);border-radius:6px;padding:.8rem;text-align:center">
+              <div style="font-size:.65rem;color:var(--mid);margin-bottom:.3rem">BASSE SAISON</div>
+              <div style="font-family:'Cormorant Garant',serif;font-size:1.6rem;font-weight:700;color:var(--navy)" id="preview-low">—</div>
+              <div style="font-size:.65rem;color:var(--mid)">TND / nuit</div>
+            </div>
+            <div style="flex:1;background:var(--cream);border-radius:6px;padding:.8rem;text-align:center">
+              <div style="font-size:.65rem;color:var(--mid);margin-bottom:.3rem">ÉTÉ (JUIL–AOÛ)</div>
+              <div style="font-family:'Cormorant Garant',serif;font-size:1.6rem;font-weight:700;color:var(--gold)" id="preview-peak">—</div>
+              <div style="font-size:.65rem;color:var(--mid)">TND / nuit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar -->
+      <div class="adm-card">
+        <div class="adm-card-title"><i class="fas fa-calendar-alt"></i> Calendrier de disponibilité</div>
+        <div class="adm-hint">
+          <i class="fas fa-info-circle"></i>
+          Clic = changer état (libre → disponible → réservé → effacer) · Double-clic = prix personnalisé
+        </div>
+        <div class="cal-nav-row">
+          <button class="cal-nav-btn" onclick="calNav(-1)"><i class="fas fa-chevron-left"></i></button>
+          <span class="cal-month-title" id="adm-month-title"></span>
+          <button class="cal-nav-btn" onclick="calNav(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="cal-grid" id="adm-dh"></div>
+        <div class="cal-grid" id="adm-cal"></div>
+        <div class="cal-legend">
+          <div class="cl-item"><div class="cl-dot f"></div>Libre</div>
+          <div class="cl-item"><div class="cl-dot a"></div>Disponible</div>
+          <div class="cl-item"><div class="cl-dot b"></div>Réservé</div>
+          <div class="cl-item"><div class="cl-dot p"></div>En attente</div>
+        </div>
+        <div class="save-row">
+          <button class="save-btn" onclick="flashSave()"><i class="fas fa-save"></i> Sauvegarder</button>
+          <span id="save-msg"><i class="fas fa-check-circle"></i> Sauvegardé !</span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- All Reservations Management -->
+    <div style="margin-bottom:1.5rem">
+      <div class="sec-hdr">
+        <h2><i class="fas fa-list-alt"></i> Toutes les réservations</h2>
+        <button onclick="loadAllReservations()" style="background:none;border:1px solid var(--border);padding:.3rem .8rem;border-radius:4px;font-size:.75rem;cursor:pointer;font-family:'Jost',sans-serif;display:flex;align-items:center;gap:.3rem;color:var(--mid);transition:all .2s" onmouseover="this.style.borderColor='var(--navy)'" onmouseout="this.style.borderColor='var(--border)'">
+          <i class="fas fa-sync-alt"></i> Actualiser
+        </button>
+      </div>
+
+      <!-- Search -->
+      <input type="text" class="res-search" id="res-search" placeholder="🔍  Rechercher par nom, email, appartement..."
+        oninput="filterReservations()">
+
+      <!-- Filter tabs -->
+      <div class="res-filter-bar">
+        <button class="res-filter-btn active" onclick="setResFilter('all',this)">Toutes <span id="cnt-all"></span></button>
+        <button class="res-filter-btn f-pending" onclick="setResFilter('pending',this)">⏳ En attente <span id="cnt-pending"></span></button>
+        <button class="res-filter-btn f-confirmed" onclick="setResFilter('confirmed',this)">✓ Confirmées <span id="cnt-confirmed"></span></button>
+        <button class="res-filter-btn f-cancelled" onclick="setResFilter('cancelled',this)">✕ Annulées <span id="cnt-cancelled"></span></button>
+      </div>
+
+      <!-- List -->
+      <div id="all-res-list">
+        <div class="empty-state"><i class="fas fa-spinner fa-spin"></i> Chargement des réservations...</div>
+      </div>
+    </div>
+
+    <!-- Photo Management -->
+    <div class="adm-card" style="margin-bottom:1.5rem" id="photo-card">
+      <div class="adm-card-title"><i class="fas fa-images"></i> Gestion des Photos</div>
+
+      <!-- Step 1: Choose apartment -->
+      <div style="margin-bottom:1.2rem">
+        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--mid);margin-bottom:.7rem">
+          <span style="background:var(--navy);color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;margin-right:.4rem">1</span>
+          Choisir l'appartement
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem" id="photo-apt-btns">
+          <button onclick="selectPhotoApt(0)" id="photo-apt-0"
+            style="border:2px solid var(--border);background:#fff;border-radius:8px;padding:.9rem .7rem;cursor:pointer;text-align:center;transition:all .2s;font-family:'Jost',sans-serif">
+            <div style="font-size:1.4rem;margin-bottom:.3rem">🏠</div>
+            <div style="font-size:.78rem;font-weight:600;color:var(--navy);line-height:1.3">Cosy Apartment</div>
+            <div style="font-size:.65rem;color:var(--mid);margin-top:.2rem">★ 9.8</div>
+            <div class="photo-apt-count" id="photo-count-0" style="font-size:.65rem;color:var(--teal);margin-top:.3rem;font-weight:600"></div>
+          </button>
+          <button onclick="selectPhotoApt(1)" id="photo-apt-1"
+            style="border:2px solid var(--border);background:#fff;border-radius:8px;padding:.9rem .7rem;cursor:pointer;text-align:center;transition:all .2s;font-family:'Jost',sans-serif">
+            <div style="font-size:1.4rem;margin-bottom:.3rem">🛏️</div>
+            <div style="font-size:.78rem;font-weight:600;color:var(--navy);line-height:1.3">Charming 2BR</div>
+            <div style="font-size:.65rem;color:var(--mid);margin-top:.2rem">★ 9.6</div>
+            <div class="photo-apt-count" id="photo-count-1" style="font-size:.65rem;color:var(--teal);margin-top:.3rem;font-weight:600"></div>
+          </button>
+          <button onclick="selectPhotoApt(2)" id="photo-apt-2"
+            style="border:2px solid var(--border);background:#fff;border-radius:8px;padding:.9rem .7rem;cursor:pointer;text-align:center;transition:all .2s;font-family:'Jost',sans-serif">
+            <div style="font-size:1.4rem;margin-bottom:.3rem">🌅</div>
+            <div style="font-size:.78rem;font-weight:600;color:var(--navy);line-height:1.3">Charming 3BR</div>
+            <div style="font-size:.65rem;color:var(--mid);margin-top:.2rem">★ 9.7</div>
+            <div class="photo-apt-count" id="photo-count-2" style="font-size:.65rem;color:var(--teal);margin-top:.3rem;font-weight:600"></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Upload (shown after apt selected) -->
+      <div id="photo-upload-section" style="display:none">
+        <!-- Selected apt header -->
+        <div style="background:var(--navy);color:#fff;border-radius:8px;padding:.9rem 1.2rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:.7rem">
+            <i class="fas fa-home" style="color:var(--gold-l)"></i>
+            <div>
+              <div id="photo-apt-name" style="font-weight:600;font-size:.92rem;font-family:'Cormorant Garant',serif"></div>
+              <div id="photo-apt-sub" style="font-size:.68rem;opacity:.6;margin-top:.1rem"></div>
+            </div>
+          </div>
+          <span class="img-count-badge" id="img-count-badge" style="background:var(--gold)">0</span>
+        </div>
+
+        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--mid);margin-bottom:.7rem">
+          <span style="background:var(--navy);color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;margin-right:.4rem">2</span>
+          Photos actuelles
+        </div>
+
+        <!-- Image grid -->
+        <div class="img-mgmt-grid" id="img-grid" style="margin-bottom:1rem"></div>
+
+        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--mid);margin-bottom:.7rem">
+          <span style="background:var(--navy);color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;margin-right:.4rem">3</span>
+          Ajouter des photos
+        </div>
+
+        <!-- Upload zone -->
+        <div class="upload-drop-zone" id="drop-zone">
+          <input type="file" accept="image/*" multiple onchange="handleFileSelect(event)">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Cliquez ou glissez vos photos ici</p>
+          <small>JPG, PNG, WEBP — Max 10 Mo chacune · Cloudinary ✓</small>
+        </div>
+        <div class="upload-progress" id="upload-progress">
+          <div class="upload-progress-bar" id="upload-bar" style="width:0%"></div>
+        </div>
+        <div id="upload-status" style="font-size:.75rem;color:var(--mid);margin-top:.4rem;min-height:1.2em"></div>
+
+        <div style="margin-top:.8rem">
+          <button onclick="selectPhotoApt(null)" style="background:none;border:none;color:var(--mid);font-size:.75rem;cursor:pointer;font-family:'Jost',sans-serif;display:flex;align-items:center;gap:.3rem;padding:0">
+            <i class="fas fa-arrow-left"></i> Changer d'appartement
+          </button>
+        </div>
+      </div>
+
+      <!-- Hidden Cloudinary config -->
+      <div style="display:none">
+        <div class="cld-setup-banner" id="cld-banner"></div>
+        <div class="cld-inputs" id="cld-inputs">
+          <div class="cld-fg"><label>Cloud Name</label><input type="text" id="cld-name" placeholder="dpxnv7hej" oninput="saveCldConfig()"></div>
+          <div class="cld-fg"><label>Upload Preset</label><input type="text" id="cld-preset" placeholder="hammamet_apartments" oninput="saveCldConfig()"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ══ USERS & LISTINGS MANAGEMENT ══ -->
+    <div class="adm-card" style="margin-bottom:1.5rem">
+      <div class="adm-card-title"><i class="fas fa-shield-alt"></i> Gestion de la plateforme</div>
+
+      <div class="adm-section-tabs">
+        <button class="ast active" onclick="switchMgmtTab('users',this)"><i class="fas fa-users"></i> Comptes <span class="ast-badge" id="users-count">—</span></button>
+        <button class="ast" onclick="switchMgmtTab('listings',this)"><i class="fas fa-building"></i> Annonces partenaires <span class="ast-badge" id="listings-count">—</span></button>
+      </div>
+
+      <!-- USERS PANEL -->
+      <div id="mgmt-users">
+        <div class="pw-note">
+          <i class="fas fa-lock"></i>
+          <span><strong>Mots de passe :</strong> Firebase les chiffre de façon irréversible — ils ne peuvent jamais être lus, même par l'administrateur. C'est une exigence de sécurité.</span>
+        </div>
+        <input type="text" class="usr-search" id="user-search" placeholder="🔍  Rechercher par nom, email, rôle..." oninput="filterUsers()">
+        <div class="user-grid" id="user-grid">
+          <div class="empty-state"><i class="fas fa-spinner fa-spin"></i></div>
+        </div>
+      </div>
+
+      <!-- LISTINGS PANEL -->
+      <div id="mgmt-listings" style="display:none">
+        <input type="text" class="usr-search" id="listing-search" placeholder="🔍  Rechercher par titre, partenaire, ville..." oninput="filterListings()">
+        <div class="listing-grid" id="listing-grid">
+          <div class="empty-state"><i class="fas fa-spinner fa-spin"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings info -->
+    <div class="adm-card" style="margin-bottom:1.5rem">
+      <div class="adm-card-title"><i class="fas fa-cog"></i> Paramètres du site</div>
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">WhatsApp</div>
+          <div class="setting-val"><i class="fab fa-whatsapp"></i> +49 151 44935727</div>
+          <div class="setting-note">Pour modifier : cherchez OWNER_WA dans index.html et admin.html</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">Email réservations</div>
+          <div class="setting-val"><i class="fas fa-envelope"></i> wassimferchichi747@gmail.com</div>
+          <div class="setting-note">Pour modifier : cherchez OWNER_EMAIL dans le code HTML</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">Mot de passe admin</div>
+          <div class="setting-val"><i class="fas fa-key"></i> hammamet2025</div>
+          <div class="setting-note">Pour modifier : cherchez ADMIN_PW dans admin.html (ligne ~330)</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">Accès admin</div>
+          <div class="setting-val"><i class="fas fa-link"></i> /admin.html</div>
+          <div class="setting-note">Partagez uniquement avec des personnes de confiance. Invisible du site public.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guide -->
+    <div class="guide-card">
+      <div class="guide-header" onclick="toggleGuide()">
+        <h3><i class="fas fa-book-open"></i> Guide d'utilisation</h3>
+        <i class="fas fa-chevron-down arrow" id="guide-arrow"></i>
+      </div>
+      <div class="guide-body" id="guide-body">
+        <div class="guide-step">
+          <div class="guide-num">1</div>
+          <div class="guide-text">
+            <strong>Calendrier — Gestion des disponibilités</strong>
+            <span>1er clic = Disponible (vert) · 2e clic = Réservé (rouge) · 3e clic = Effacer. Double-clic = Saisir un prix personnalisé pour cette nuit-là.</span>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">2</div>
+          <div class="guide-text">
+            <strong>Tarification</strong>
+            <span>Définissez le prix de base par nuit. En juillet et août, le tarif monte automatiquement (×1.5). Double-cliquez une date pour un tarif exceptionnel ce jour-là seulement.</span>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">3</div>
+          <div class="guide-text">
+            <strong>Quand vous recevez un email de réservation</strong>
+            <span>Ouvrez admin.html. Sélectionnez l'appartement concerné. Marquez les dates en rouge (Réservé) via le calendrier. Répondez au client par email pour confirmer.</span>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">4</div>
+          <div class="guide-text">
+            <strong>Demandes en attente (depuis le site)</strong>
+            <span>Quand un client remplit le formulaire, ses dates apparaissent en orange. Cliquez ✓ Confirmer pour les marquer comme réservées, ou ✕ Rejeter pour libérer les dates.</span>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">5</div>
+          <div class="guide-text">
+            <strong>Email automatique (EmailJS)</strong>
+            <span>Le premier email déclenchera une demande de vérification formsubmit.co. Cliquez sur le lien reçu pour activer (une seule fois). Ensuite tout fonctionne automatiquement.</span>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">6</div>
+          <div class="guide-text">
+            <strong>Ajouter des photos</strong>
+            <span>Ouvrez index.html. Cherchez les commentaires PHOTOS APT 1 / APT 2 / APT 3. Remplacez null par 'chemin/vers/votre-photo.jpg' pour chaque image.</span>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">7</div>
+          <div class="guide-text">
+            <strong>Changer le mot de passe</strong>
+            <span>Ouvrez admin.html. Cherchez : const ADMIN_PW = 'hammamet2025'. Remplacez par votre propre mot de passe et enregistrez le fichier.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+</div><!-- /admin-app -->
+
+<script>
+// ══════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════
+const ADMIN_PW    = 'hammamet2025';
+const OWNER_WA    = '4915144935727';
+const OWNER_EMAIL = 'wassimferchichi747@gmail.com';
+
+const APTS = [
+  {name:'Cosy Apartment Near the Sea', score:'9.8', basePrice:320, peakPrice:390},
+  {name:'Charming 2BR · Garden & Balcony', score:'9.6', basePrice:320, peakPrice:390},
+  {name:'Charming Modern 3BR · Terrace', score:'9.7', basePrice:390, peakPrice:490},
+];
+
+const MFR=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const DFR=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+
+let curApt=0, calY=new Date().getFullYear(), calM=new Date().getMonth();
+let clickTimers={};
+
+// ══════════════════════════════════════
+// HELPERS — Firestore-based (no localStorage for data)
+// ══════════════════════════════════════
+function ds(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function fromDs(s){const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)}
+
+// In-memory calendar cache for current admin view
+let _admCalCache = {}; // {dateStr: {s, p}}
+
+// Load ALL calendar data for current apt from Firestore
+async function loadAptCalFromFirestore(){
+  _admCalCache = {};
+  if(!db) return;
+  try{
+    const snap = await db.collection('apt_calendar')
+      .where('aptIndex','==',admApt)
+      .get();
+    snap.docs.forEach(d=>{
+      const data=d.data();
+      if(data.date) _admCalCache[data.date]={s:data.status||null,p:data.customPrice||null};
+    });
+  }catch(e){console.warn('loadAptCalFromFirestore:',e);}
+}
+
+// Save/delete a single day in Firestore
+async function saveDayFS(apt,date,status,customPrice){
+  if(!db)return;
+  const docId=`apt_${apt}_${date}`;
+  try{
+    if(!status&&!customPrice){
+      await db.collection('apt_calendar').doc(docId).delete();
+      delete _admCalCache[date];
+    }else{
+      const obj={aptIndex:apt,date,status:status||null,customPrice:customPrice||null,updatedAt:firebase.firestore.FieldValue.serverTimestamp()};
+      await db.collection('apt_calendar').doc(docId).set(obj);
+      _admCalCache[date]={s:status||null,p:customPrice||null};
+    }
+  }catch(e){throw e;}
+}
+
+
+// ══════════════════════════════════════
+// FIREBASE INIT
+// ══════════════════════════════════════
+const firebaseConfig = {
+  apiKey:            "AIzaSyAh0v1QzO-ZfSrupRXMNo55fzyVaLZ_WG0",
+  authDomain:        "hammamet-rent.firebaseapp.com",
+  projectId:         "hammamet-rent",
+  storageBucket:     "hammamet-rent.firebasestorage.app",
+  messagingSenderId: "670133718792",
+  appId:             "1:670133718792:web:9fed0f73b16a09c38a26bd"
+};
+if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// ══════════════════════════════════════
+// LOGIN
+// ══════════════════════════════════════
+function doLogin(){
+  if(document.getElementById('pw-input').value===ADMIN_PW){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('admin-app').style.display='block';
+    initAdmin();
+  } else {
+    document.getElementById('login-err').style.display='block';
+    document.getElementById('pw-input').value='';
+    document.getElementById('pw-input').focus();
+  }
+}
+
+function doLogout(){
+  document.getElementById('admin-app').style.display='none';
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('pw-input').value='';
+  document.getElementById('login-err').style.display='none';
+}
+
+document.getElementById('pw-input').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+async function initAdmin(){
+  loadBase();
+  renderCal();
+  await renderPending();
+  await loadAllReservations();
+  loadCldConfig();
+  await syncAptImagesFromFirestore(); // Load apt images from Firestore
+  updateAllPhotoCountBadges();
+  loadUsers();
+  loadListings();
+}
+
+// ══════════════════════════════════════
+// APT SWITCH
+// ══════════════════════════════════════
+function swApt(n){
+  curApt=n;
+  document.querySelectorAll('.apt-tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+  loadBase();
+  renderCal();
+}
+
+// ══════════════════════════════════════
+// PRICING — Firestore
+// ══════════════════════════════════════
+async function loadBase(){
+  if(!db){
+    document.getElementById('base-price').value='';
+    updatePricePreviews(APTS[curApt].basePrice);
+    return;
+  }
+  try{
+    const snap=await db.collection('apt_settings').doc(`apt_${curApt}`).get();
+    const p=snap.exists?snap.data().basePrice:null;
+    document.getElementById('base-price').value=p||'';
+    updatePricePreviews(p||APTS[curApt].basePrice);
+  }catch(e){
+    document.getElementById('base-price').value='';
+    updatePricePreviews(APTS[curApt].basePrice);
+  }
+}
+
+async function saveBase(){
+  const p=document.getElementById('base-price').value;
+  const price=p?parseInt(p):null;
+  if(!db)return;
+  try{
+    await db.collection('apt_settings').doc(`apt_${curApt}`).set({
+      basePrice:price,
+      aptIndex:curApt,
+      updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+    },{merge:true});
+    updatePricePreviews(price||APTS[curApt].basePrice);
+  }catch(e){alert('Erreur sauvegarde prix: '+e.message);}
+}
+
+function updatePricePreviews(base){
+  document.getElementById('preview-low').textContent=base||'—';
+  document.getElementById('preview-peak').textContent=base?Math.round(base*1.5):'—';
+}
+
+// ══════════════════════════════════════
+// CALENDAR — Firestore
+// ══════════════════════════════════════
+function calNav(dir){
+  calM+=dir;
+  if(calM<0){calM=11;calY--}
+  if(calM>11){calM=0;calY++}
+  renderCal();
+}
+
+async function renderCal(){
+  document.getElementById('adm-month-title').textContent=`${MFR[calM]} ${calY}`;
+  document.getElementById('adm-dh').innerHTML=DFR.map(d=>`<div class="cal-dh">${d}</div>`).join('');
+  const cal=document.getElementById('adm-cal');
+  cal.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:1rem;color:var(--mid);font-size:.8rem"><i class="fas fa-spinner fa-spin"></i> Chargement...</div>';
+
+  // Load from Firestore
+  await loadAptCalFromFirestore();
+  cal.innerHTML='';
+
+  const today=new Date();today.setHours(0,0,0,0);
+  let dow=new Date(calY,calM,1).getDay();dow=dow===0?6:dow-1;
+  const dim=new Date(calY,calM+1,0).getDate();
+  const todayStr=ds(today);
+
+  for(let i=0;i<dow;i++) cal.insertAdjacentHTML('beforeend','<div></div>');
+
+  for(let day=1;day<=dim;day++){
+    const date=new Date(calY,calM,day);
+    const dateStr=ds(date);
+    const stored=_admCalCache[dateStr]||{};
+    const isPast=date<today;
+    const isToday=dateStr===todayStr;
+    const s=stored.s||'free';
+
+    const cell=document.createElement('div');
+    cell.className='adc '+s+(isPast?' past':'')+(isToday?' today':'');
+    cell.innerHTML=`<span>${day}</span>${stored.p?`<span class="ap">${stored.p}</span>`:''}`;
+
+    if(!isPast){
+      cell.addEventListener('click',()=>{
+        if(clickTimers[dateStr]){
+          clearTimeout(clickTimers[dateStr]);clickTimers[dateStr]=null;
+          // Double-click: custom price
+          const newP=prompt(`Prix pour le ${day} ${MFR[calM]} (TND) — vide = prix par défaut :`,stored.p||'');
+          if(newP!==null){
+            saveDayFS(curApt,dateStr,stored.s,newP?parseInt(newP):null)
+              .then(()=>renderCal())
+              .catch(e=>alert('Erreur: '+e.message));
+          }
+        }else{
+          clickTimers[dateStr]=setTimeout(()=>{
+            clickTimers[dateStr]=null;
+            const cur=stored.s||'free';
+            const next=cur==='free'?'a':cur==='a'?'b':'free';
+            saveDayFS(curApt,dateStr,next==='free'?null:next,stored.p||null)
+              .then(()=>{renderCal();renderStats();})
+              .catch(e=>alert('Erreur: '+e.message));
+          },240);
+        }
+      });
+    }
+    cal.appendChild(cell);
+  }
+}
+
+// ══════════════════════════════════════
+// SAVE FEEDBACK
+// ══════════════════════════════════════
+function flashSave(){
+  // Data is auto-saved to Firestore on every change
+  const m=document.getElementById('save-msg');
+  if(m){m.style.display='inline';setTimeout(()=>m.style.display='none',2500);}
+  showToast('✅ Tout est sauvegardé sur Firestore !');
+}
+
+// ══════════════════════════════════════
+// PENDING BOOKINGS — Firestore
+// ══════════════════════════════════════
+let _pendingDocs = []; // cache of Firestore docs
+
+async function renderPending(){
+  const container=document.getElementById('pending-list');
+  const badge=document.getElementById('pending-badge');
+  container.innerHTML='<div style="font-size:.78rem;color:var(--mid);padding:.5rem;"><i class="fas fa-spinner fa-spin"></i> Chargement...</div>';
+
+  try{
+    const snap=await db.collection('reservations')
+      .where('status','==','pending')
+      .orderBy('createdAt','desc')
+      .get();
+
+    _pendingDocs=snap.docs.map(d=>({id:d.id,...d.data()}));
+
+    if(!_pendingDocs.length){
+      container.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i>Aucune demande en attente — tout est à jour !</div>';
+      badge.style.display='none';
+      document.getElementById('st-pending').textContent='0';
+      document.getElementById('st-total').textContent=await getTotalCount();
+      return;
+    }
+
+    badge.textContent=_pendingDocs.length+' nouvelle'+(_pendingDocs.length>1?'s':'');
+    badge.style.display='inline-block';
+    document.getElementById('st-pending').textContent=_pendingDocs.length;
+
+    container.innerHTML=_pendingDocs.map((b,i)=>`
+      <div class="pb-item">
+        <div>
+          <div class="pb-apt">${b.apartment||'Appartement '+(b.aptIndex+1)}</div>
+          <div class="pb-name">${b.name}</div>
+          <div class="pb-details">
+            📅 ${b.checkInFormatted||b.checkIn} → ${b.checkOutFormatted||b.checkOut}&nbsp;&nbsp;·&nbsp;&nbsp;
+            🌙 ${b.nights||'?'} nuit${(b.nights>1)?'s':''}&nbsp;&nbsp;·&nbsp;&nbsp;
+            💰 ${b.total} TND&nbsp;&nbsp;·&nbsp;&nbsp;
+            ✉️ <a href="mailto:${b.email}" style="color:var(--teal)">${b.email}</a>
+            ${b.phone?'&nbsp;&nbsp;·&nbsp;&nbsp;📞 '+b.phone:''}
+            ${b.guests?'&nbsp;&nbsp;·&nbsp;&nbsp;👥 '+b.guests+' pers.':''}
+          </div>
+        </div>
+        <div class="pb-btns">
+          <button class="pb-ok" onclick="confirmPending('${b.id}',${b.aptIndex||0},'${b.checkIn}','${b.checkOut}')">
+            <i class="fas fa-check"></i> Confirmer
+          </button>
+          <button class="pb-rej" onclick="rejectPending('${b.id}',${b.aptIndex||0},'${b.checkIn}','${b.checkOut}')">
+            <i class="fas fa-times"></i> Rejeter
+          </button>
+        </div>
+      </div>`).join('');
+
+    renderStats();
+  }catch(e){
+    container.innerHTML=`<div style="color:var(--red);padding:.5rem;font-size:.78rem">Erreur Firestore: ${e.message}</div>`;
+    console.error(e);
+  }
+}
+
+async function confirmPending(docId, aptIdx, checkIn, checkOut){
+  if(!confirm('Confirmer cette réservation ? Les dates seront marquées comme réservées.'))return;
+  try{
+    await db.collection('reservations').doc(docId).update({status:'confirmed'});
+    // Mark dates booked in Firestore
+    if(checkIn&&checkOut){
+      const batch=db.batch();
+      let cur=new Date(checkIn);const end=new Date(checkOut);
+      while(cur<end){
+        const dateStr=ds(cur);
+        batch.set(db.collection('apt_calendar').doc(`apt_${aptIdx}_${dateStr}`),{aptIndex:aptIdx,date:dateStr,status:'b',customPrice:null,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+        cur.setDate(cur.getDate()+1);
+      }
+      await batch.commit();
+    }
+    await renderPending();
+    renderCal();
+    renderStats();
+  }catch(e){alert('Erreur: '+e.message);}
+}
+
+async function rejectPending(docId, aptIdx, checkIn, checkOut){
+  if(!confirm('Rejeter cette demande et libérer les dates ?'))return;
+  try{
+    await db.collection('reservations').doc(docId).update({status:'cancelled'});
+    // Free dates in Firestore
+    if(checkIn&&checkOut){
+      const batch=db.batch();
+      let cur=new Date(checkIn);const end=new Date(checkOut);
+      while(cur<end){
+        batch.delete(db.collection('apt_calendar').doc(`apt_${aptIdx}_${ds(cur)}`));
+        cur.setDate(cur.getDate()+1);
+      }
+      await batch.commit();
+    }
+    await renderPending();
+    renderCal();
+    renderStats();
+  }catch(e){alert('Erreur: '+e.message);}
+}
+
+// ══════════════════════════════════════
+// STATS — mixes Firestore + localStorage
+// ══════════════════════════════════════
+async function getTotalCount(){
+  try{
+    const snap=await db.collection('reservations').get();
+    return snap.size;
+  }catch{return '?';}
+}
+
+async function renderStats(){
+  if(!db)return;
+  let booked=0,rev=0;
+  // Count booked dates from Firestore
+  try{
+    const snap=await db.collection('apt_calendar').where('status','==','b').get();
+    snap.docs.forEach(d=>{
+      const data=d.data();
+      booked++;
+      const date=fromDs(data.date);
+      const m=date.getMonth();
+      const base=APTS[data.aptIndex]?.basePrice||0;
+      const price=data.customPrice||((m===6||m===7)?Math.round(base*1.5):base);
+      rev+=price;
+    });
+  }catch(e){console.warn('renderStats:',e);}
+
+  let pending=_pendingDocs.length;
+  const total=await getTotalCount();
+  document.getElementById('st-total').textContent=total;
+  document.getElementById('st-pending').textContent=pending;
+  document.getElementById('st-booked').textContent=booked;
+  document.getElementById('st-revenue').textContent=rev.toLocaleString('fr-FR');
+}
+
+
+// ══════════════════════════════════════
+// GUIDE
+// ══════════════════════════════════════
+function toggleGuide(){
+  const body=document.getElementById('guide-body');
+  const arrow=document.getElementById('guide-arrow');
+  body.classList.toggle('open');
+  arrow.style.transform=body.classList.contains('open')?'rotate(180deg)':'';
+}
+
+// ══════════════════════════════════════
+// CLOUDINARY IMAGE MANAGEMENT
+// ══════════════════════════════════════
+
+const CLD_CLOUD_NAME = 'dpxnv7hej';
+const CLD_PRESET     = 'hammamet_apartments';
+
+function getCldConfig(){
+  // Always use hardcoded credentials (can be overridden by localStorage)
+  const stored=JSON.parse(localStorage.getItem('har_cld')||'{}');
+  return {
+    cloudName: stored.cloudName||CLD_CLOUD_NAME,
+    preset:    stored.preset||CLD_PRESET
+  };
+}
+function saveCldConfig(){
+  const n=document.getElementById('cld-name').value.trim();
+  const p=document.getElementById('cld-preset').value.trim();
+  localStorage.setItem('har_cld',JSON.stringify({cloudName:n,preset:p}));
+  const configured=n&&p;
+  document.getElementById('cld-banner').style.display=configured?'none':'flex';
+  updateImgCountBadge();
+}
+
+function loadCldConfig(){
+  const cfg=getCldConfig();
+  const n=document.getElementById('cld-name');
+  const p=document.getElementById('cld-preset');
+  if(n)n.value=cfg.cloudName||CLD_CLOUD_NAME;
+  if(p)p.value=cfg.preset||CLD_PRESET;
+  // Banner always hidden since credentials are configured
+  const banner=document.getElementById('cld-banner');
+  if(banner)banner.style.display='none';
+}
+
+async function getAptImages(apt){
+  // Read from Firestore only
+  if(!db) return [];
+  try{
+    const snap=await db.collection('apt_images').doc('apt_'+apt).get();
+    return snap.exists?(snap.data().images||[]):[];
+  }catch(e){return [];}
+}
+
+// Load all apt images from Firestore (used on init to update count badges)
+async function syncAptImagesFromFirestore(){
+  if(!db) return;
+  try{
+    for(let i=0;i<3;i++){
+      const snap=await db.collection('apt_images').doc('apt_'+i).get();
+      const imgs=snap.exists?(snap.data().images||[]):[];
+      // Update count badge
+      const badge=document.getElementById('photo-count-'+i);
+      if(badge){badge.textContent=imgs.length?imgs.length+' photo'+(imgs.length>1?'s':''):'Aucune photo';badge.style.color=imgs.length?'var(--teal)':'var(--mid)';}
+    }
+  }catch(e){console.warn('syncAptImages:',e);}
+}
+async function saveAptImages(apt,imgs){
+  // Save ONLY to Firestore
+  if(!db) return;
+  try{
+    await db.collection('apt_images').doc('apt_'+apt).set({
+      aptIndex:apt, images:imgs,
+      updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }catch(e){
+    console.error('saveAptImages:',e);
+    toast('⚠ Erreur sauvegarde photos: '+e.message);
+  }
+}
+
+const APT_NAMES = [
+  {name:'Cosy Apartment Near the Sea', sub:'Hammamet Sud · ★ 9.8'},
+  {name:'Charming 2BR · Garden & Balcony', sub:'Hammamet · ★ 9.6'},
+  {name:'Charming Modern 3BR · Terrace', sub:'Hammamet · ★ 9.7'}
+];
+
+function selectPhotoApt(idx){
+  const section=document.getElementById('photo-upload-section');
+  const btns=document.getElementById('photo-apt-btns');
+  if(idx===null){
+    // Go back to selection
+    section.style.display='none';
+    btns.style.display='grid';
+    updateAllPhotoCountBadges();
+    return;
+  }
+  curApt=idx;
+  // Highlight selected button
+  [0,1,2].forEach(i=>{
+    const b=document.getElementById('photo-apt-'+i);
+    if(b){
+      b.style.borderColor=i===idx?'var(--gold)':'var(--border)';
+      b.style.background=i===idx?'rgba(191,155,87,.08)':'#fff';
+    }
+  });
+  // Show upload section
+  const nameEl=document.getElementById('photo-apt-name');
+  const subEl=document.getElementById('photo-apt-sub');
+  if(nameEl)nameEl.textContent=APT_NAMES[idx].name;
+  if(subEl)subEl.textContent=APT_NAMES[idx].sub;
+  btns.style.display='none';
+  section.style.display='block';
+  renderImgGrid();
+  setStatus('');
+  setProgress(null);
+}
+
+function updateAllPhotoCountBadges(){
+  [0,1,2].forEach(i=>{
+    const el=document.getElementById('photo-count-'+i);
+    if(el){
+      const n=getAptImages(i).length;
+      el.textContent=n?n+' photo'+(n>1?'s':''):'Aucune photo';
+      el.style.color=n?'var(--teal)':'var(--mid)';
+    }
+  });
+}
+
+function renderImgGrid(){
+  const apt=curApt;
+  const imgs=getAptImages(apt);
+  const grid=document.getElementById('img-grid');
+  if(!grid)return;
+  if(!imgs.length){
+    grid.innerHTML='<div style="font-size:.78rem;color:var(--mid);padding:.5rem 0 1rem;font-style:italic">Aucune photo pour cet appartement. Ajoutez-en ci-dessous.</div>';
+    updateImgCountBadge();
+    return;
+  }
+  grid.innerHTML=imgs.map((url,i)=>`
+    <div class="img-thumb-wrap">
+      <img src="${url}" alt="Photo ${i+1}" loading="lazy">
+      ${i===0?'<span class="img-thumb-main">Principale</span>':''}
+      <button class="img-thumb-del" onclick="deleteImg(${i})" title="Supprimer"><i class="fas fa-times"></i></button>
+    </div>`).join('');
+  updateImgCountBadge();
+}
+
+function updateImgCountBadge(){
+  const badge=document.getElementById('img-count-badge');
+  if(badge)badge.textContent=getAptImages(curApt).length;
+  updateAllPhotoCountBadges();
+}
+
+function deleteImg(idx){
+  if(!confirm('Supprimer cette photo ?'))return;
+  const imgs=getAptImages(curApt);
+  imgs.splice(idx,1);
+  saveAptImages(curApt,imgs);
+  renderImgGrid();
+  updateAllPhotoCountBadges();
+}
+
+function setStatus(msg,color='var(--mid)'){
+  const el=document.getElementById('upload-status');
+  if(el){el.textContent=msg;el.style.color=color;}
+}
+
+function setProgress(pct){
+  const prog=document.getElementById('upload-progress');
+  const bar=document.getElementById('upload-bar');
+  if(!prog||!bar)return;
+  if(pct===null){prog.style.display='none';bar.style.width='0%';return;}
+  prog.style.display='block';
+  bar.style.width=pct+'%';
+}
+
+async function uploadToCloudinary(file){
+  const cfg=getCldConfig();
+  if(!cfg.cloudName||!cfg.preset){
+    alert('Veuillez d abord configurer votre Cloud Name et Upload Preset Cloudinary ci-dessus.');
+    return null;
+  }
+  if(file.size>10*1024*1024){setStatus('❌ Fichier trop lourd (max 10 Mo)',getComputedStyle(document.documentElement).getPropertyValue('--red').trim()||'#dc2626');return null;}
+
+  const fd=new FormData();
+  fd.append('file',file);
+  fd.append('upload_preset',cfg.preset);
+  fd.append('folder','hammamet-rental');
+
+  const res=await fetch(`https://api.cloudinary.com/v1_1/${cfg.cloudName}/image/upload`,{method:'POST',body:fd});
+  if(!res.ok)throw new Error('Upload failed: '+res.status);
+  const json=await res.json();
+  // Use f_auto,q_auto for optimized delivery
+  return json.secure_url.replace('/upload/','/upload/f_auto,q_auto,w_1200/');
+}
+
+async function handleFileSelect(event){
+  const files=Array.from(event.target.files);
+  if(!files.length)return;
+  await uploadFiles(files);
+  event.target.value=''; // reset input
+}
+
+async function uploadFiles(files){
+  const cfg=getCldConfig();
+  if(!cfg.cloudName||!cfg.preset){
+    alert('Configurez d abord votre Cloudinary Cloud Name et Preset ci-dessus.');
+    return;
+  }
+  setStatus(`Téléchargement en cours (0/${files.length})...`);
+  setProgress(0);
+
+  let uploaded=0;
+  const newUrls=[];
+  for(const file of files){
+    try{
+      const url=await uploadToCloudinary(file);
+      if(url){newUrls.push(url);uploaded++;}
+      setStatus(`Téléchargement en cours (${uploaded}/${files.length})...`);
+      setProgress(Math.round((uploaded/files.length)*100));
+    }catch(e){
+      setStatus(`❌ Erreur lors du téléchargement de ${file.name}`,'#dc2626');
+    }
+  }
+
+  if(newUrls.length){
+    const imgs=getAptImages(curApt);
+    imgs.push(...newUrls);
+    saveAptImages(curApt,imgs);
+    renderImgGrid();
+    setStatus(`✅ ${newUrls.length} photo${newUrls.length>1?'s':''} ajoutée${newUrls.length>1?'s':''} avec succès !`,'#16a34a');
+  }
+  setTimeout(()=>setProgress(null),1500);
+}
+
+// Drag & drop support
+document.addEventListener('DOMContentLoaded',()=>{
+  const zone=document.getElementById('drop-zone');
+  if(!zone)return;
+  zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('dragover')});
+  zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
+  zone.addEventListener('drop',e=>{
+    e.preventDefault();zone.classList.remove('dragover');
+    const files=Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'));
+    if(files.length)uploadFiles(files);
+  });
+});
+
+// ══════════════════════════════════════
+// ALL RESERVATIONS — Admin management
+// ══════════════════════════════════════
+let _allResDocs = [];
+let _resFilter  = 'all';
+
+async function loadAllReservations(){
+  const container = document.getElementById('all-res-list');
+  if(!container) return;
+  container.innerHTML = '<div class="empty-state"><i class="fas fa-spinner fa-spin"></i> Chargement...</div>';
+  try{
+    const snap = await db.collection('reservations').orderBy('createdAt','desc').get();
+    _allResDocs = snap.docs.map(d => ({id:d.id,...d.data()}));
+    updateResCounts();
+    renderAllReservations();
+  } catch(e){
+    container.innerHTML = `<div style="color:var(--red);padding:1rem;font-size:.82rem">Erreur: ${e.message}</div>`;
+  }
+}
+
+function updateResCounts(){
+  const f=(id,n)=>{const el=document.getElementById(id);if(el)el.textContent=n?'('+n+')':''};
+  f('cnt-all',       _allResDocs.length);
+  f('cnt-pending',   _allResDocs.filter(r=>r.status==='pending').length);
+  f('cnt-confirmed', _allResDocs.filter(r=>r.status==='confirmed').length);
+  f('cnt-cancelled', _allResDocs.filter(r=>r.status==='cancelled').length);
+}
+
+function setResFilter(filter,btn){
+  _resFilter=filter;
+  document.querySelectorAll('.res-filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  renderAllReservations();
+}
+
+function filterReservations(){ renderAllReservations(); }
+
+function renderAllReservations(){
+  const container=document.getElementById('all-res-list');
+  if(!container)return;
+  const search=(document.getElementById('res-search')?.value||'').toLowerCase().trim();
+  let list=_allResDocs;
+  if(_resFilter!=='all') list=list.filter(r=>r.status===_resFilter);
+  if(search) list=list.filter(r=>
+    (r.name||'').toLowerCase().includes(search)||
+    (r.email||'').toLowerCase().includes(search)||
+    (r.apartment||'').toLowerCase().includes(search)||
+    (r.phone||'').toLowerCase().includes(search)
+  );
+  if(!list.length){
+    container.innerHTML='<div class="empty-state"><i class="fas fa-search"></i><div style="font-size:.85rem;color:var(--mid);margin-top:.5rem">Aucune réservation trouvée</div></div>';
+    return;
+  }
+  const statusLabel={pending:'⏳ En attente',confirmed:'✓ Confirmée',cancelled:'✕ Annulée'};
+  container.innerHTML=list.map(res=>{
+    const created=res.createdAt?.toDate?res.createdAt.toDate().toLocaleDateString('fr-FR'):'';
+    const actions=res.status==='cancelled'?'':`
+      <div class="adm-res-actions">
+        ${res.status==='pending'?`<button class="btn-adm-confirm-small" onclick="adminConfirmRes('${res.id}',${res.aptIndex||0},'${res.checkIn||''}','${res.checkOut||''}')"><i class="fas fa-check"></i> Confirmer</button>`:''}
+        <button class="btn-adm-cancel" onclick="adminCancelRes('${res.id}',${res.aptIndex||0},'${res.checkIn||''}','${res.checkOut||''}')"><i class="fas fa-times"></i> Annuler</button>
+      </div>`;
+    return `<div class="adm-res-card ${res.status}">
+      <div style="flex:1;min-width:0">
+        <div class="adm-res-apt">${res.apartment||'Appartement '+(res.aptIndex+1)}</div>
+        <div class="adm-res-client"><i class="fas fa-user" style="color:var(--gold);font-size:.7rem;margin-right:.3rem"></i>
+          ${res.name} &nbsp;·&nbsp; <a href="mailto:${res.email}" style="color:var(--teal);font-size:.78rem">${res.email}</a>
+          ${res.phone?'&nbsp;·&nbsp; 📞 '+res.phone:''}
+        </div>
+        <div class="adm-res-detail">
+          📅 ${res.checkInFormatted||res.checkIn} → ${res.checkOutFormatted||res.checkOut}
+          &nbsp;·&nbsp; 🌙 ${res.nights||'?'} nuit${res.nights>1?'s':''}
+          &nbsp;·&nbsp; 💰 <strong>${res.total} TND</strong>
+          ${res.guests?'&nbsp;·&nbsp; 👥 '+res.guests+' pers.':''}
+        </div>
+        <div style="margin-top:.4rem;display:flex;align-items:center;gap:.6rem">
+          <span class="adm-res-status ${res.status}">${statusLabel[res.status]||res.status}</span>
+          ${created?`<span style="font-size:.65rem;color:var(--mid)">Créée le ${created}</span>`:''}
+        </div>
+      </div>
+      ${actions}
+    </div>`;
+  }).join('');
+}
+
+async function adminConfirmRes(docId,aptIdx,checkIn,checkOut){
+  if(!confirm('Confirmer cette réservation ?'))return;
+  try{
+    await db.collection('reservations').doc(docId).update({status:'confirmed'});
+    if(checkIn&&checkOut){
+      const batch=db.batch();
+      let cur=new Date(checkIn);const end=new Date(checkOut);
+      while(cur<end){
+        const dateStr=ds(cur);
+        batch.set(db.collection('apt_calendar').doc(`apt_${aptIdx}_${dateStr}`),{aptIndex:aptIdx,date:dateStr,status:'b',customPrice:null,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+        cur.setDate(cur.getDate()+1);
+      }
+      batch.commit().then(()=>renderCal()).catch(e=>console.warn(e));
+    }
+    const doc=_allResDocs.find(r=>r.id===docId);if(doc)doc.status='confirmed';
+    updateResCounts();renderAllReservations();await renderPending();renderStats();
+    showToast('✅ Réservation confirmée !');
+  }catch(e){alert('Erreur: '+e.message);}
+}
+
+async function adminCancelRes(docId,aptIdx,checkIn,checkOut){
+  if(!confirm('Annuler cette réservation ? Les dates seront libérées.'))return;
+  try{
+    await db.collection('reservations').doc(docId).update({status:'cancelled'});
+    if(checkIn&&checkOut){
+      const batch=db.batch();
+      let cur=new Date(checkIn);const end=new Date(checkOut);
+      while(cur<end){
+        batch.delete(db.collection('apt_calendar').doc(`apt_${aptIdx}_${ds(cur)}`));
+        cur.setDate(cur.getDate()+1);
+      }
+      batch.commit().then(()=>renderCal()).catch(e=>console.warn(e));
+    }
+    const doc=_allResDocs.find(r=>r.id===docId);if(doc)doc.status='cancelled';
+    updateResCounts();renderAllReservations();await renderPending();renderStats();
+    showToast('❌ Réservation annulée');
+  }catch(e){alert('Erreur: '+e.message);}
+}
+
+// ══════════════════════════════════════
+// USERS & LISTINGS MANAGEMENT
+// ══════════════════════════════════════
+let _allUsers = [];
+let _allListings = [];
+
+// ── Tab switch ──
+function switchMgmtTab(tab, btn){
+  document.querySelectorAll('.ast').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  document.getElementById('mgmt-users').style.display = tab==='users'?'block':'none';
+  document.getElementById('mgmt-listings').style.display = tab==='listings'?'block':'none';
+  if(tab==='users' && !_allUsers.length) loadUsers();
+  if(tab==='listings' && !_allListings.length) loadListings();
+}
+
+// ══ USERS ══
+async function loadUsers(){
+  const grid = document.getElementById('user-grid');
+  grid.innerHTML = '<div class="empty-state"><i class="fas fa-spinner fa-spin"></i></div>';
+  try{
+    const snap = await db.collection('users').orderBy('createdAt','desc').get();
+    _allUsers = snap.docs.map(d=>({id:d.id,...d.data()}));
+    document.getElementById('users-count').textContent = _allUsers.length;
+    renderUsers();
+  }catch(e){
+    // If no createdAt index, try without orderBy
+    try{
+      const snap2 = await db.collection('users').get();
+      _allUsers = snap2.docs.map(d=>({id:d.id,...d.data()}));
+      document.getElementById('users-count').textContent = _allUsers.length;
+      renderUsers();
+    }catch(e2){
+      grid.innerHTML = `<div class="empty-state"><i class="fas fa-exclamation-circle" style="color:var(--red)"></i><p style="font-size:.82rem;color:var(--red)">Erreur: ${e2.message}</p></div>`;
+    }
+  }
+}
+
+function filterUsers(){ renderUsers(); }
+
+function renderUsers(){
+  const grid = document.getElementById('user-grid');
+  const search = (document.getElementById('user-search')?.value||'').toLowerCase().trim();
+  let list = _allUsers;
+  if(search) list = list.filter(u=>
+    (u.name||'').toLowerCase().includes(search)||
+    (u.email||'').toLowerCase().includes(search)||
+    (u.role||'').toLowerCase().includes(search)||
+    (u.city||'').toLowerCase().includes(search)||
+    (u.phone||'').toLowerCase().includes(search)
+  );
+
+  if(!list.length){
+    grid.innerHTML='<div class="empty-state"><i class="fas fa-search"></i><p style="font-size:.82rem;color:var(--mid)">Aucun compte trouvé</p></div>';
+    return;
+  }
+
+  grid.innerHTML = list.map(u=>{
+    const initial = (u.name||u.email||'?')[0].toUpperCase();
+    const role = u.role||'user';
+    const roleLabel = role==='admin'?'Admin':role==='partner'?'Partenaire':'Utilisateur';
+    const created = u.createdAt?.toDate ? u.createdAt.toDate().toLocaleDateString('fr-FR') : '—';
+    const partnerSince = u.partnerSince?.toDate ? u.partnerSince.toDate().toLocaleDateString('fr-FR') : null;
+
+    const details = [
+      u.phone ? `<span><i class="fas fa-phone"></i>${u.phone}</span>` : '',
+      u.city  ? `<span><i class="fas fa-map-marker-alt"></i>${u.city}</span>` : '',
+      u.partnerDesc ? `<span><i class="fas fa-home"></i>${u.partnerDesc.substring(0,60)}${u.partnerDesc.length>60?'...':''}</span>` : '',
+      `<span><i class="fas fa-calendar-alt"></i>Inscrit le ${created}</span>`,
+      partnerSince ? `<span><i class="fas fa-handshake"></i>Partenaire depuis le ${partnerSince}</span>` : '',
+    ].filter(Boolean).join('');
+
+    const canDelete = role !== 'admin';
+    const roleOptions = role==='partner'
+      ? `<button class="btn-role-change" onclick="changeUserRole('${u.id}','user')"><i class="fas fa-user-minus"></i> Rétrograder</button>`
+      : role==='user'
+      ? `<button class="btn-role-change" onclick="changeUserRole('${u.id}','partner')" style="color:var(--gold);border-color:rgba(191,155,87,.4)"><i class="fas fa-handshake"></i> Promouvoir partenaire</button>`
+      : '';
+
+    return `<div class="user-card ${role==='partner'?'partner':role==='admin'?'admin-role':''}">
+      <div class="uc-top">
+        <div class="uc-avatar ${role==='partner'?'p':role==='admin'?'a':'u'}">${initial}</div>
+        <div style="flex:1;min-width:0">
+          <div class="uc-name">${u.name||'—'}</div>
+          <div class="uc-email">${u.email||u.id}</div>
+          <span class="uc-role ${role==='admin'?'admin-role':role}">${roleLabel}</span>
+        </div>
+      </div>
+      ${details ? `<div class="uc-details">${details}</div>` : ''}
+      <div style="font-size:.7rem;background:var(--cream);border-radius:4px;padding:.5rem .7rem;color:var(--mid);display:flex;align-items:center;gap:.4rem">
+        <i class="fas fa-lock" style="color:var(--border)"></i>
+        <span>Mot de passe : chiffré par Firebase — non lisible</span>
+      </div>
+      <div class="uc-actions">
+        ${roleOptions}
+        ${canDelete ? `<button class="btn-del-user" onclick="deleteUser('${u.id}','${u.name||u.email}')"><i class="fas fa-trash"></i> Supprimer</button>` : '<span style="font-size:.7rem;color:var(--mid);align-self:center">Compte admin protégé</span>'}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function changeUserRole(uid, newRole){
+  const label = newRole==='partner' ? 'partenaire' : 'utilisateur standard';
+  if(!confirm(`Changer le rôle de ce compte en ${label} ?`)) return;
+  try{
+    const update = {role: newRole};
+    if(newRole==='partner') update.partnerSince = firebase.firestore.FieldValue.serverTimestamp();
+    await db.collection('users').doc(uid).update(update);
+    const u = _allUsers.find(x=>x.id===uid);
+    if(u){ u.role=newRole; if(newRole==='partner')u.partnerSince={toDate:()=>new Date()}; }
+    renderUsers();
+    showToast(`✅ Rôle changé en ${label}`);
+  }catch(e){alert('Erreur: '+e.message);}
+}
+
+async function deleteUser(uid, name){
+  if(!confirm(`Supprimer définitivement le compte de "${name}" ?\n\nCela supprimera son profil Firestore. Pour supprimer complètement le compte Firebase Auth, utilisez la console Firebase → Authentication.`)) return;
+  try{
+    // Delete user's properties
+    const propsSnap = await db.collection('properties').where('hostId','==',uid).get();
+    const batch = db.batch();
+    propsSnap.docs.forEach(d=>batch.delete(d.ref));
+    // Delete user doc
+    batch.delete(db.collection('users').doc(uid));
+    await batch.commit();
+    _allUsers = _allUsers.filter(u=>u.id!==uid);
+    document.getElementById('users-count').textContent = _allUsers.length;
+    renderUsers();
+    await loadListings(); // refresh listings
+    showToast('🗑 Compte et annonces supprimés');
+  }catch(e){alert('Erreur: '+e.message);}
+}
+
+// ══ LISTINGS ══
+async function loadListings(){
+  const grid = document.getElementById('listing-grid');
+  grid.innerHTML = '<div class="empty-state"><i class="fas fa-spinner fa-spin"></i></div>';
+  try{
+    const snap = await db.collection('properties').get();
+    _allListings = snap.docs.map(d=>({id:d.id,...d.data()}));
+    document.getElementById('listings-count').textContent = _allListings.length;
+    renderListings();
+  }catch(e){
+    grid.innerHTML = `<div class="empty-state"><p style="color:var(--red);font-size:.82rem">Erreur: ${e.message}</p></div>`;
+  }
+}
+
+function filterListings(){ renderListings(); }
+
+async function getHostName(hostId){
+  if(!hostId) return '—';
+  const cached = _allUsers.find(u=>u.id===hostId);
+  if(cached) return cached.name||cached.email||hostId;
+  try{
+    const snap = await db.collection('users').doc(hostId).get();
+    return snap.data()?.name || snap.data()?.email || hostId;
+  }catch{ return hostId; }
+}
+
+function renderListings(){
+  const grid = document.getElementById('listing-grid');
+  const search = (document.getElementById('listing-search')?.value||'').toLowerCase().trim();
+  let list = _allListings;
+  if(search) list = list.filter(p=>
+    (p.title||'').toLowerCase().includes(search)||
+    (p.location||'').toLowerCase().includes(search)||
+    (p.description||'').toLowerCase().includes(search)
+  );
+
+  if(!list.length){
+    grid.innerHTML='<div class="empty-state"><i class="fas fa-search"></i><p style="font-size:.82rem;color:var(--mid)">Aucune annonce trouvée</p></div>';
+    return;
+  }
+
+  grid.innerHTML = list.map(p=>{
+    const imgs = p.images||[];
+    const imgHtml = imgs[0]
+      ? `<img src="${imgs[0]}" alt="">`
+      : `<div class="listing-img-ph"><i class="fas fa-home"></i></div>`;
+    const host = _allUsers.find(u=>u.id===p.hostId);
+    const hostName = host?.name||host?.email||p.hostId||'—';
+    const created = p.createdAt?.toDate ? p.createdAt.toDate().toLocaleDateString('fr-FR') : '—';
+    const isActive = p.active !== false;
+
+    return `<div class="listing-card">
+      <div class="listing-img">
+        ${imgHtml}
+        <span class="listing-type">Partenaire</span>
+        <span class="listing-status ${isActive?'active':'inactive'}">${isActive?'Actif':'Inactif'}</span>
+      </div>
+      <div class="listing-body">
+        <div class="listing-title">${p.title||'Sans titre'}</div>
+        <div class="listing-host"><i class="fas fa-user"></i>${hostName} · Publié le ${created}</div>
+        <div class="listing-meta">
+          <span><i class="fas fa-map-marker-alt"></i>${p.location||'—'}</span>
+          <span><i class="fas fa-bed"></i>${p.beds||0} ch.</span>
+          <span><i class="fas fa-users"></i>${p.guests||0} pers.</span>
+        </div>
+        <div class="listing-price">${p.basePrice||0} <span class="per">TND / nuit</span></div>
+        <div class="listing-actions">
+          <button class="btn-toggle-listing" onclick="toggleListing('${p.id}',${isActive})">
+            ${isActive?'<i class="fas fa-eye-slash"></i> Désactiver':'<i class="fas fa-eye"></i> Activer'}
+          </button>
+          <button class="btn-del-listing" onclick="deleteListing('${p.id}','${(p.title||'').replace(/'/g,'')}')">
+            <i class="fas fa-trash"></i> Supprimer
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function toggleListing(id, current){
+  try{
+    await db.collection('properties').doc(id).update({active:!current});
+    const p = _allListings.find(x=>x.id===id);
+    if(p) p.active = !current;
+    renderListings();
+    showToast(current?'⏸ Annonce désactivée':'▶ Annonce activée');
+  }catch(e){alert('Erreur: '+e.message);}
+}
+
+async function deleteListing(id, title){
+  if(!confirm(`Supprimer définitivement l'annonce "${title}" ?\n\nCette action est irréversible.`)) return;
+  try{
+    await db.collection('properties').doc(id).delete();
+    _allListings = _allListings.filter(p=>p.id!==id);
+    document.getElementById('listings-count').textContent = _allListings.length;
+    renderListings();
+    showToast('🗑 Annonce supprimée');
+  }catch(e){alert('Erreur: '+e.message);}
+}
+
+function showToast(msg){
+  let t=document.getElementById('adm-toast');
+  if(!t){
+    t=document.createElement('div');t.id='adm-toast';
+    t.style.cssText='position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:.75rem 1.5rem;border-radius:6px;font-size:.85rem;font-weight:600;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:opacity .3s;font-family:Jost,sans-serif';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;t.style.opacity='1';
+  clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',2500);
+}
+
+</script>
+</body>
+</html>
