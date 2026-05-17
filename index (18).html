@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hammamet Appartement Rental — Location à Hammamet, Tunisie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+/* ══════════════════════════════════════════
+   VARIABLES & RESET
+══════════════════════════════════════════ */
+:root{
+  --navy:#0f2744; --navy-d:#081829; --navy-m:#1a3a5c;
+  --gold:#bf9b57; --gold-l:#d4b47a; --gold-pale:rgba(191,155,87,.12);
+  --teal:#3a8fa3; --cream:#f7f4ef; --sand:#e8ddd0;
+  --white:#fff; --dark:#1a1a1a; --mid:#4a5568;
+  --border:#ddd8d0; --shadow:0 4px 30px rgba(15,39,68,.1);
+  --shadow-h:0 16px 50px rgba(15,39,68,.2);
+  --red:#dc2626; --green:#16a34a; --orange:#ea580c;
+  --blue-sel:#1e40af; --blue-range:#dbeafe;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garant',serif}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+button{font-family:'Jost',sans-serif}
+input,select,textarea{font-family:'Jost',sans-serif}
+
+/* ══════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.3rem 3rem;transition:all .4s;
+}
+#nav.scrolled{background:rgba(8,24,41,.97);backdrop-filter:blur(14px);padding:.85rem 3rem;box-shadow:0 2px 25px rgba(0,0,0,.3)}
+.nav-logo{font-family:'Cormorant Garant',serif;font-size:1.45rem;font-weight:600;color:#fff;text-decoration:none}
+.nav-logo em{color:var(--gold);font-style:normal}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.lang-sw{display:flex;gap:.2rem;background:rgba(255,255,255,.08);border-radius:20px;padding:.2rem}
+.lb{border:none;background:transparent;color:rgba(255,255,255,.6);padding:.2rem .65rem;border-radius:15px;cursor:pointer;font-size:.7rem;font-weight:600;letter-spacing:.08em;transition:all .2s}
+.lb.active{background:var(--gold);color:#fff}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.4rem}
+.burger span{width:20px;height:2px;background:#fff}
+.mob-menu{display:none;position:fixed;inset:0;z-index:900;background:rgba(8,24,41,.98);flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{color:#fff;text-decoration:none;font-size:1.4rem;font-family:'Cormorant Garant',serif;letter-spacing:.05em}
+/* User account button */
+.nav-user-btn{display:flex;align-items:center;gap:.45rem;background:rgba(191,155,87,.15);border:1px solid rgba(191,155,87,.35);color:var(--gold-l);padding:.38rem .9rem;border-radius:20px;cursor:pointer;font-size:.72rem;font-weight:600;letter-spacing:.06em;transition:all .25s;white-space:nowrap}
+.nav-user-btn:hover{background:rgba(191,155,87,.28);color:#fff}
+.nav-user-btn.logged{background:var(--gold);border-color:var(--gold);color:#fff}
+.nav-user-btn i{font-size:.85rem}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+#hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 80%,rgba(58,143,163,.25) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 20%,rgba(191,155,87,.15) 0%,transparent 55%),linear-gradient(160deg,#040e1a 0%,#0f2744 50%,#0d2f3e 100%)}
+.hero-mesh{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(191,155,87,.03) 80px,rgba(191,155,87,.03) 81px),repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(191,155,87,.03) 80px,rgba(191,155,87,.03) 81px);animation:meshD 30s linear infinite}
+@keyframes meshD{from{transform:translate(0,0)}to{transform:translate(80px,80px)}}
+.particles{position:absolute;inset:0;overflow:hidden}
+.pp{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(191,155,87,.4) 0%,transparent 70%);animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(100vh) scale(0);opacity:0}5%{opacity:1}95%{opacity:.3}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.hero-wave{position:absolute;bottom:-1px;left:0;right:0;height:80px;overflow:hidden}
+.hero-wave svg{display:block}
+.hero-content{position:relative;z-index:2;padding:2rem;max-width:800px}
+.h-eyebrow{display:inline-flex;align-items:center;gap:.6rem;border:1px solid rgba(191,155,87,.4);color:var(--gold-l);padding:.35rem 1.1rem;border-radius:30px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;margin-bottom:1.8rem;background:rgba(191,155,87,.06)}
+h1.h-title{font-size:clamp(2.8rem,7vw,5rem);color:#fff;line-height:1.1;margin-bottom:1.5rem;text-shadow:0 4px 30px rgba(0,0,0,.3);font-weight:500}
+h1.h-title .acc{color:var(--gold);font-style:italic}
+.h-sub{font-size:1rem;color:rgba(255,255,255,.72);max-width:540px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:#fff;padding:.85rem 2.2rem;border-radius:3px;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;border:2px solid var(--gold);display:inline-flex;align-items:center;gap:.6rem}
+.btn-gold:hover{background:transparent;color:var(--gold)}
+.btn-ghost{background:transparent;color:#fff;padding:.85rem 2.2rem;border-radius:3px;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;border:2px solid rgba(255,255,255,.35);display:inline-flex;align-items:center;gap:.6rem}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.h-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.4);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:bounce 2.5s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ══════════════════════════════════════════
+   STATS
+══════════════════════════════════════════ */
+.stats{background:var(--navy-d);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:2rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,.07);transition:background .2s}
+.stat:last-child{border-right:none}
+.stat:hover{background:rgba(191,155,87,.06)}
+.stat-n{font-family:'Cormorant Garant',serif;font-size:2.2rem;font-weight:600;color:var(--gold);display:block;line-height:1}
+.stat-l{font-size:.68rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.12em;margin-top:.4rem;display:block}
+
+/* ══════════════════════════════════════════
+   SECTIONS COMMON
+══════════════════════════════════════════ */
+section{padding:5.5rem 2rem}
+.container{max-width:1160px;margin:0 auto}
+.tag{display:inline-block;color:var(--gold);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:.7rem}
+.sec-title{font-size:clamp(1.9rem,4vw,2.8rem);color:var(--navy);line-height:1.15;margin-bottom:.9rem;font-weight:600}
+.sec-title.light{color:#fff}
+.divider{width:48px;height:2px;background:var(--gold);margin:1rem 0 1.6rem}
+.divider.center{margin:1rem auto 1.6rem}
+.fi{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fi.in{opacity:1;transform:none}
+.fi-d1{transition-delay:.1s}.fi-d2{transition-delay:.2s}.fi-d3{transition-delay:.3s}
+
+/* ══════════════════════════════════════════
+   ABOUT
+══════════════════════════════════════════ */
+#about{background:var(--cream)}
+.about-g{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center}
+.about-b p{color:var(--mid);line-height:1.9;font-size:.93rem;margin-bottom:1rem;font-weight:300}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.8rem}
+.feat{display:flex;align-items:center;gap:.65rem;background:#fff;border:1px solid var(--border);border-left:3px solid var(--gold);padding:.85rem 1rem;border-radius:4px;font-size:.8rem;font-weight:500}
+.feat i{color:var(--gold);width:15px;text-align:center}
+.about-vis{position:relative}
+.about-img{width:100%;height:420px;border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.about-img img{width:100%;height:100%;object-fit:cover}
+
+/* ══════════════════════════════════════════
+   PROPERTY CARDS
+══════════════════════════════════════════ */
+#properties{background:#fff}
+.props-head{text-align:center;margin-bottom:3rem}
+.props-head p{color:var(--mid);max-width:480px;margin:.5rem auto 0;font-size:.9rem;font-weight:300;line-height:1.7}
+.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.prop-card{background:#fff;border-radius:8px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow);transition:all .35s;display:flex;flex-direction:column;cursor:pointer}
+.prop-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-h)}
+.prop-img{height:220px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy-m),var(--teal))}
+.prop-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.prop-card:hover .prop-img img{transform:scale(1.06)}
+.prop-img-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;color:rgba(255,255,255,.3);font-size:.75rem;text-align:center;padding:1rem}
+.prop-img-ph i{font-size:2.5rem}
+.p-badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:#fff;padding:.28rem .85rem;border-radius:2px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.p-score{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.96);padding:.28rem .7rem;border-radius:2px;font-size:.78rem;font-weight:700;color:var(--dark);display:flex;align-items:center;gap:.3rem}
+.p-score i{color:#f59e0b;font-size:.7rem}
+.prop-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.p-zone{font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-bottom:.35rem}
+.p-name{font-size:1.25rem;color:var(--navy);margin-bottom:.45rem;font-weight:600}
+.p-loc{display:flex;align-items:center;gap:.4rem;color:var(--mid);font-size:.8rem;margin-bottom:.9rem}
+.p-loc i{color:var(--gold);font-size:.72rem}
+.p-desc{color:var(--mid);font-size:.83rem;line-height:1.7;margin-bottom:1.1rem;font-weight:300;flex:1}
+.p-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem}
+.ptag{background:var(--cream);border:1px solid var(--border);color:var(--mid);padding:.2rem .65rem;border-radius:2px;font-size:.7rem;display:flex;align-items:center;gap:.3rem}
+.ptag i{color:var(--teal);font-size:.62rem}
+.p-foot{border-top:1px solid var(--border);padding-top:1rem;display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.p-price .amt{font-family:'Cormorant Garant',serif;font-size:1.5rem;color:var(--navy);font-weight:600}
+.p-price .per{font-size:.7rem;color:var(--mid)}
+.p-cap{display:flex;gap:.7rem;color:var(--mid);font-size:.77rem}
+.p-cap span{display:flex;align-items:center;gap:.3rem}
+.btn-detail{background:var(--navy);color:#fff;padding:.6rem 1.2rem;border-radius:3px;border:none;font-size:.75rem;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.4rem;white-space:nowrap}
+.btn-detail:hover{background:var(--gold)}
+.detail-link{color:var(--teal);font-size:.78rem;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:.3rem;transition:color .2s}
+.detail-link:hover{color:var(--navy)}
+
+/* ══════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════ */
+#contact{background:var(--navy-d);color:#fff}
+.contact-g{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.ci-list{display:flex;flex-direction:column;gap:1.3rem;margin-bottom:2rem}
+.ci{display:flex;align-items:flex-start;gap:1rem}
+.ci-icon{width:42px;height:42px;min-width:42px;background:rgba(191,155,87,.15);border:1px solid rgba(191,155,87,.3);border-radius:5px;display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.ci-det strong{display:block;font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:.2rem}
+.ci-det a,.ci-det span{color:rgba(255,255,255,.9);font-size:.9rem;text-decoration:none}
+.ci-det a:hover{color:var(--gold)}
+.socials{display:flex;gap:.7rem}
+.soc{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:all .2s;font-size:.85rem}
+.soc:hover{background:var(--gold);border-color:var(--gold)}
+.map-f{border-radius:8px;overflow:hidden;height:380px;border:1px solid rgba(255,255,255,.08)}
+.map-f iframe{width:100%;height:100%;border:none;display:block}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer{background:#040d17;padding:1.8rem 2rem;text-align:center}
+footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
+footer strong{color:rgba(255,255,255,.6)}
+
+/* ══════════════════════════════════════════
+   FLOATING BUTTONS
+══════════════════════════════════════════ */
+.wa-float{position:fixed;bottom:2.2rem;right:2.2rem;z-index:800;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .25s}
+.wa-float:hover{transform:scale(1.1)}
+.wa-pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,.5);animation:pulse 2.5s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:1}100%{transform:scale(1.65);opacity:0}}
+/* Admin panel moved to admin.html */
+
+/* ══════════════════════════════════════════
+   MODAL OVERLAY (shared)
+══════════════════════════════════════════ */
+.modal-ov{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.75);backdrop-filter:blur(5px);align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto}
+.modal-ov.open{display:flex}
+
+/* ══════════════════════════════════════════
+   PROPERTY DETAIL MODAL
+══════════════════════════════════════════ */
+.prop-modal{background:#fff;border-radius:12px;width:100%;max-width:1000px;margin:auto;overflow:hidden;position:relative}
+.pm-close{position:absolute;top:1rem;right:1rem;z-index:10;background:rgba(0,0,0,.5);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.pm-close:hover{background:var(--gold)}
+/* Gallery */
+/* Gallery */
+.pm-gallery{position:relative;background:#0a1a2e;overflow:hidden;max-height:520px;min-height:260px;display:flex;align-items:center;justify-content:center}
+.pm-gallery-main{width:100%;height:auto;max-height:520px;object-fit:contain;display:block;transition:opacity .25s}
+.pm-gallery-ph{width:100%;height:300px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.2);font-size:3rem;flex-direction:column;gap:.5rem}
+.pm-gallery-ph small{font-size:.65rem;font-family:'Jost',sans-serif;color:rgba(255,255,255,.3)}
+/* Nav arrows */
+.gal-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10;backdrop-filter:blur(4px)}
+.gal-arrow:hover{background:rgba(0,0,0,.7)}
+.gal-prev{left:1rem}
+.gal-next{right:1rem}
+/* Counter */
+.gal-counter{position:absolute;top:.8rem;right:.8rem;background:rgba(0,0,0,.55);color:#fff;font-size:.72rem;font-weight:600;padding:.28rem .75rem;border-radius:20px;backdrop-filter:blur(4px);letter-spacing:.05em}
+/* Thumbnails strip */
+.gal-thumbs{position:absolute;bottom:0;left:0;right:0;display:flex;gap:3px;height:70px;background:rgba(0,0,0,.35);padding:4px;overflow-x:auto;scrollbar-width:none}
+.gal-thumbs::-webkit-scrollbar{display:none}
+.gal-thumb{flex-shrink:0;width:90px;height:62px;object-fit:cover;cursor:pointer;opacity:.6;transition:opacity .2s;border-radius:3px;border:2px solid transparent}
+.gal-thumb:hover{opacity:.85}
+.gal-thumb.active{opacity:1;border-color:#fff}
+/* Legacy - keep for compatibility */
+.gallery-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font-size:1.8rem;flex-direction:column;gap:.5rem}
+.gallery-ph small{font-size:.65rem;font-family:'Jost',sans-serif}
+.more-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;font-weight:600}
+.pm-main-img{display:none}.pm-thumb{display:none}.more-ph{display:none}
+/* Property modal body */
+.pm-body{padding:2rem}
+.pm-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+.pm-title{font-size:1.8rem;color:var(--navy);font-weight:600}
+.pm-score-big{background:var(--navy);color:#fff;padding:.5rem .9rem;border-radius:6px;text-align:center;flex-shrink:0}
+.pm-score-big .sn{font-size:1.4rem;font-weight:700;font-family:'Cormorant Garant',serif;display:block}
+.pm-score-big .sl{font-size:.6rem;letter-spacing:.08em;opacity:.7}
+.pm-meta{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.pm-meta-item{display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:var(--mid)}
+.pm-meta-item i{color:var(--gold)}
+.pm-desc-full{color:var(--mid);line-height:1.8;font-size:.9rem;margin-bottom:1.5rem;font-weight:300}
+.pm-amenities{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:2rem}
+.pm-am{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--dark);font-weight:500}
+.pm-am i{color:var(--teal);width:15px}
+.pm-book-bar{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.pm-price-display .a{font-family:'Cormorant Garant',serif;font-size:2rem;font-weight:700;color:var(--navy)}
+.pm-price-display .b{font-size:.8rem;color:var(--mid)}
+.btn-book-now{background:var(--gold);color:#fff;border:none;padding:1rem 2.5rem;border-radius:4px;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:.6rem}
+.btn-book-now:hover{background:var(--navy)}
+
+/* ══════════════════════════════════════════
+   BOOKING CALENDAR MODAL
+══════════════════════════════════════════ */
+.book-modal{background:#fff;border-radius:12px;width:100%;max-width:920px;margin:auto;overflow:hidden;position:relative}
+.bm-header{background:var(--navy);color:#fff;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.bm-header h3{font-family:'Cormorant Garant',serif;font-size:1.4rem;font-weight:600}
+.bm-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.bm-close:hover{background:rgba(255,255,255,.3)}
+.bm-apt-name{font-size:.8rem;opacity:.7;margin-top:.2rem}
+.bm-body{padding:1.5rem 2rem 2rem}
+
+/* Calendar nav */
+.cal-nav-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+.cal-nav-btn{background:none;border:1px solid var(--border);width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--dark);display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:.8rem}
+.cal-nav-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* Two months */
+.cal-months{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.cal-month-title{font-family:'Cormorant Garant',serif;font-size:1.1rem;font-weight:600;color:var(--navy);text-align:center;margin-bottom:.8rem}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-dh{text-align:center;font-size:.65rem;font-weight:600;color:var(--mid);letter-spacing:.08em;text-transform:uppercase;padding:.5rem 0}
+
+/* Day cells */
+.dc{height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border-radius:4px;transition:background .1s;user-select:none;position:relative;border:1px solid transparent}
+.dc:hover:not(.dc-past):not(.dc-booked):not(.dc-pending){background:#f0f7ff;border-color:#bfdbfe}
+.dc-empty{pointer-events:none}
+.dc-past{opacity:.3;pointer-events:none;cursor:default}
+.dc-today{border-color:var(--gold) !important}
+.dc-booked{background:#fef2f2;cursor:not-allowed}
+.dc-booked .dc-n{color:var(--red);text-decoration:line-through}
+.dc-pending{background:#fff7ed;cursor:not-allowed}
+.dc-pending .dc-n{color:var(--orange)}
+.dc-sel-start,.dc-sel-end{background:var(--navy) !important;color:#fff !important;border-color:var(--navy) !important;border-radius:4px}
+.dc-sel-start{border-radius:4px 0 0 4px}
+.dc-sel-end{border-radius:0 4px 4px 0}
+.dc-sel-start.dc-sel-end{border-radius:4px}
+.dc-in-range{background:var(--blue-range);border-color:#bfdbfe;border-radius:0}
+.dc-sel-start .dc-p,.dc-sel-end .dc-p{color:rgba(255,255,255,.7)}
+.dc-n{font-size:.82rem;font-weight:600;color:var(--dark)}
+.dc-p{font-size:.58rem;font-weight:400;color:var(--mid);margin-top:1px}
+.dc-booked-x{font-size:.65rem;color:var(--red)}
+
+/* Calendar legend */
+.cal-legend{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;margin:1rem 0;padding:1rem;background:var(--cream);border-radius:6px}
+.cl-item{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--mid)}
+.cl-dot{width:12px;height:12px;border-radius:3px}
+.cl-dot.avail{background:#f0f7ff;border:1px solid #bfdbfe}
+.cl-dot.booked{background:#fef2f2;border:1px solid #fca5a5}
+.cl-dot.selected{background:var(--navy)}
+.cl-dot.range{background:var(--blue-range);border:1px solid #bfdbfe}
+
+/* Calendar error */
+.cal-err{background:#fef2f2;border:1px solid #fca5a5;border-radius:6px;padding:.7rem 1rem;font-size:.82rem;color:var(--red);display:none;margin:.5rem 0;text-align:center}
+.cal-err.show{display:block}
+
+/* Date selection info */
+.date-sel-info{display:flex;gap:1.5rem;margin:1rem 0;flex-wrap:wrap}
+.dsi-item{flex:1;min-width:140px;background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem}
+.dsi-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mid);font-weight:600;margin-bottom:.3rem}
+.dsi-val{font-size:1rem;color:var(--navy);font-weight:600;font-family:'Cormorant Garant',serif}
+
+/* Price summary */
+.price-summary{background:var(--navy);color:#fff;border-radius:8px;padding:1.2rem 1.5rem;margin:1rem 0;display:none}
+.ps-row{display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;font-size:.88rem}
+.ps-row.total{border-top:1px solid rgba(255,255,255,.2);margin-top:.5rem;padding-top:.8rem;font-size:1.1rem;font-weight:700}
+.ps-row.total .v{font-family:'Cormorant Garant',serif;font-size:1.4rem;color:var(--gold-l)}
+
+/* Booking form */
+.book-form-section{display:none;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
+.book-form-title{font-family:'Cormorant Garant',serif;font-size:1.3rem;color:var(--navy);margin-bottom:1.2rem;font-weight:600}
+.bf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dark);margin-bottom:.35rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.72rem .9rem;border:1px solid var(--border);border-radius:4px;font-size:.87rem;color:var(--dark);background:#fff;outline:none;transition:all .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(15,39,68,.08)}
+.submit-btn{width:100%;background:var(--navy);color:#fff;border:none;padding:1rem;border-radius:4px;font-size:.92rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:.7rem;margin-top:.5rem}
+.submit-btn:hover{background:var(--gold)}
+.submit-btn.loading{opacity:.7;pointer-events:none}
+.form-note{text-align:center;font-size:.72rem;color:var(--mid);margin-top:.6rem;font-weight:300}
+
+/* ══════════════════════════════════════════
+   CONFIRMATION MODAL
+══════════════════════════════════════════ */
+.confirm-modal{background:#fff;border-radius:12px;max-width:500px;width:100%;margin:auto;padding:3rem 2rem;text-align:center}
+.confirm-icon{width:70px;height:70px;background:#f0fdf4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.5rem;color:var(--green)}
+.confirm-modal h3{font-size:1.8rem;color:var(--navy);margin-bottom:.8rem;font-family:'Cormorant Garant',serif}
+.confirm-modal p{color:var(--mid);line-height:1.7;font-size:.9rem;margin-bottom:1.5rem}
+.confirm-details{background:var(--cream);border-radius:6px;padding:1rem;text-align:left;font-size:.85rem;margin-bottom:1.5rem}
+.confirm-details .cd{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid var(--border)}
+.confirm-details .cd:last-child{border-bottom:none}
+.confirm-details .cd span:first-child{color:var(--mid);font-weight:500}
+.confirm-details .cd span:last-child{font-weight:600;color:var(--navy)}
+.btn-close-confirm{background:var(--navy);color:#fff;border:none;padding:.85rem 2rem;border-radius:4px;font-size:.85rem;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-close-confirm:hover{background:var(--gold)}
+
+
+
+
+/* ══════════════════════════════════════════
+   USER ACCOUNT MODALS
+══════════════════════════════════════════ */
+/* Auth modal (login / register) */
+.auth-modal{background:#fff;border-radius:12px;width:100%;max-width:440px;margin:auto;overflow:hidden;position:relative}
+.auth-tabs{display:flex;border-bottom:1px solid var(--border)}
+.auth-tab{flex:1;padding:.9rem;border:none;background:#fff;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--mid);letter-spacing:.06em;transition:all .2s;font-family:'Jost',sans-serif}
+.auth-tab.active{color:var(--navy);border-bottom:2px solid var(--gold);background:#fff}
+.auth-body{padding:1.8rem 2rem}
+.auth-title{font-family:'Cormorant Garant',serif;font-size:1.5rem;color:var(--navy);margin-bottom:.3rem;font-weight:600}
+.auth-sub{font-size:.8rem;color:var(--mid);margin-bottom:1.5rem;font-weight:300}
+.auth-fg{margin-bottom:1rem}
+.auth-fg label{display:block;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dark);margin-bottom:.35rem}
+.auth-fg input{width:100%;padding:.75rem .9rem;border:1px solid var(--border);border-radius:4px;font-size:.87rem;color:var(--dark);outline:none;transition:all .2s;font-family:'Jost',sans-serif}
+.auth-fg input:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(15,39,68,.07)}
+.auth-btn{width:100%;background:var(--navy);color:#fff;border:none;padding:.9rem;border-radius:4px;font-size:.88rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Jost',sans-serif;margin-top:.5rem}
+.auth-btn:hover{background:var(--gold)}
+.auth-err{background:#fef2f2;border:1px solid #fca5a5;border-radius:4px;padding:.6rem .9rem;font-size:.78rem;color:var(--red);display:none;margin-bottom:.8rem}
+.auth-err.show{display:block}
+.auth-close{position:absolute;top:.9rem;right:.9rem;background:var(--cream);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;color:var(--mid);font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.auth-close:hover{background:var(--border)}
+
+/* Account dashboard modal */
+.account-modal{background:#fff;border-radius:12px;width:100%;max-width:700px;margin:auto;overflow:hidden;position:relative;max-height:88vh;display:flex;flex-direction:column}
+.acm-header{background:var(--navy);color:#fff;padding:1.4rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.acm-header h3{font-family:'Cormorant Garant',serif;font-size:1.3rem;font-weight:600}
+.acm-user-info{font-size:.78rem;opacity:.7;margin-top:.15rem}
+.acm-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.acm-close:hover{background:rgba(255,255,255,.3)}
+.acm-body{padding:1.5rem 2rem;overflow-y:auto;flex:1}
+.acm-section-title{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--mid);margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+.acm-section-title i{color:var(--gold)}
+/* Reservation cards */
+.res-card{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.3rem;margin-bottom:.8rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.res-card.pending{border-left:3px solid var(--orange)}
+.res-card.confirmed{border-left:3px solid var(--green)}
+.res-card.cancelled{border-left:3px solid #9ca3af;opacity:.65}
+.res-apt{font-family:'Cormorant Garant',serif;font-size:1.05rem;color:var(--navy);font-weight:600;margin-bottom:.25rem}
+.res-dates{font-size:.82rem;color:var(--mid);display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem}
+.res-dates i{color:var(--gold);font-size:.72rem}
+.res-meta{font-size:.78rem;color:var(--mid)}
+.res-status{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem .75rem;border-radius:20px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.res-status.pending{background:#fff7ed;color:var(--orange)}
+.res-status.confirmed{background:#f0fdf4;color:var(--green)}
+.res-status.cancelled{background:#f3f4f6;color:#6b7280}
+.res-actions{display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;flex-shrink:0}
+.btn-cancel-res{background:none;border:1px solid #fca5a5;color:var(--red);padding:.35rem .85rem;border-radius:3px;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Jost',sans-serif}
+.btn-cancel-res:hover{background:#fef2f2}
+.res-empty{text-align:center;padding:3rem 1rem;color:var(--mid)}
+.res-empty i{font-size:2.5rem;display:block;margin-bottom:.7rem;color:var(--border)}
+.res-empty p{font-size:.88rem;margin-bottom:1rem}
+.acm-logout{background:none;border:1px solid #fca5a5;color:var(--red);padding:.45rem 1.2rem;border-radius:3px;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Jost',sans-serif;display:flex;align-items:center;gap:.4rem}
+.acm-logout:hover{background:#fef2f2}
+.acm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.5rem}
+.acm-stat{background:var(--cream);border-radius:6px;padding:.8rem 1rem;text-align:center}
+.acm-stat .n{font-family:'Cormorant Garant',serif;font-size:1.5rem;font-weight:600;color:var(--navy)}
+.acm-stat .l{font-size:.65rem;color:var(--mid);text-transform:uppercase;letter-spacing:.1em}
+
+
+/* ══════════════════════════════════════════
+   PARTNER CTA SECTION
+══════════════════════════════════════════ */
+#partner-cta{background:var(--navy-d);padding:5rem 2rem;position:relative;overflow:hidden}
+#partner-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 80% 50%,rgba(58,143,163,.18) 0%,transparent 65%)}
+.pcta-g{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2}
+.pcta-tag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(58,143,163,.4);color:#4aadc4;padding:.3rem 1rem;border-radius:30px;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;background:rgba(58,143,163,.07)}
+.pcta-title{font-size:clamp(1.9rem,4vw,2.8rem);color:#fff;font-weight:600;line-height:1.15;margin-bottom:1rem}
+.pcta-title .acc{color:#4aadc4;font-style:italic}
+.pcta-sub{color:rgba(255,255,255,.6);font-size:.92rem;line-height:1.8;font-weight:300;margin-bottom:2rem}
+.pcta-feats{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:2.2rem}
+.pcta-feat{display:flex;align-items:center;gap:.55rem;color:rgba(255,255,255,.75);font-size:.82rem;font-weight:400}
+.pcta-feat i{color:#4aadc4;width:14px;text-align:center;font-size:.8rem}
+.btn-host{background:#3a8fa3;color:#fff;padding:.9rem 2.2rem;border-radius:3px;text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;border:2px solid #3a8fa3;display:inline-flex;align-items:center;gap:.6rem}
+.btn-host:hover{background:transparent;color:#4aadc4;border-color:#4aadc4}
+.pcta-visual{position:relative}
+.pcta-cards{display:flex;flex-direction:column;gap:1rem}
+.pcta-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:1.2rem 1.4rem;display:flex;align-items:center;gap:1rem}
+.pcta-card-icon{width:44px;height:44px;min-width:44px;background:rgba(58,143,163,.15);border:1px solid rgba(58,143,163,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#4aadc4;font-size:1.1rem}
+.pcta-card-text strong{display:block;color:#fff;font-size:.88rem;margin-bottom:.15rem;font-weight:500}
+.pcta-card-text span{color:rgba(255,255,255,.5);font-size:.75rem}
+.pcta-earnings{background:rgba(191,155,87,.1);border:1px solid rgba(191,155,87,.25);border-radius:8px;padding:1.2rem 1.4rem;text-align:center;margin-top:1rem}
+.pcta-earnings .big{font-family:'Cormorant Garant',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1}
+.pcta-earnings .lbl{font-size:.72rem;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;display:block}
+@media(max-width:860px){
+  .pcta-g{grid-template-columns:1fr;gap:3rem}
+  .pcta-visual{display:none}
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:960px){
+  .about-g,.contact-g{grid-template-columns:1fr;gap:2.5rem}
+  .props-grid{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  #nav{padding:1rem 1.5rem}
+  #nav.scrolled{padding:.7rem 1.5rem}
+  .nav-links{display:none}
+  .burger{display:flex}
+  .pm-gallery{max-height:380px;min-height:220px}
+  .gal-thumbs{height:55px}
+  .gal-thumb{width:70px;height:47px}
+  .pm-amenities{grid-template-columns:1fr 1fr}
+  .cal-months{grid-template-columns:1fr}
+  .bf-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .props-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pm-book-bar{flex-direction:column;align-items:stretch}
+  .btn-book-now{justify-content:center}
+}
+</style>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Hammamet <em>Appartement</em> Rental</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-fr="À Propos" data-en="About">À Propos</a></li>
+    <li><a href="#properties" data-fr="Appartements" data-en="Apartments">Appartements</a></li>
+    <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lb active" onclick="setLang('fr')">FR</button>
+      <button class="lb" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="nav-user-btn" id="nav-user-btn" onclick="openUserPanel()">
+      <i class="fas fa-user-circle"></i>
+      <span id="nav-user-label" data-fr="Mon Compte" data-en="My Account">Mon Compte</span>
+    </button>
+    <button class="burger" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="#about" onclick="closeMob()" data-fr="À Propos" data-en="About">À Propos</a>
+  <a href="#properties" onclick="closeMob()" data-fr="Appartements" data-en="Apartments">Appartements</a>
+  <a href="#contact" onclick="closeMob()" data-fr="Contact" data-en="Contact">Contact</a>
+  <a href="partner.html" data-fr="Louer votre bien" data-en="Host your property" style="color:#4aadc4">Louer votre bien</a>
+  <a href="#" onclick="closeMob();openUserPanel()" data-fr="Mon Compte" data-en="My Account">Mon Compte</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-mesh"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="h-eyebrow" data-fr="✦ Location Premium — Hammamet, Tunisie" data-en="✦ Premium Rentals — Hammamet, Tunisia">✦ Location Premium — Hammamet, Tunisie</div>
+    <h1 class="h-title">
+      <span data-fr="Votre Escapade" data-en="Your Perfect">Votre Escapade</span><br>
+      <em class="acc" data-fr="Méditerranéenne" data-en="Mediterranean Escape">Méditerranéenne</em>
+    </h1>
+    <p class="h-sub" data-fr="Trois appartements d'exception à Hammamet — pour des séjours en famille, des vacances romantiques ou savourer la douceur de vivre au bord de la mer tunisienne." data-en="Three exceptional apartments in Hammamet — for family stays, romantic getaways, or enjoying the sweet life by the Tunisian sea.">
+      Trois appartements d'exception à Hammamet — pour des séjours en famille, des vacances romantiques ou savourer la douceur de vivre au bord de la mer tunisienne.
+    </p>
+    <div class="hero-btns">
+      <a href="#properties" class="btn-gold"><i class="fas fa-building"></i> <span data-fr="Voir les Appartements" data-en="View Apartments">Voir les Appartements</span></a>
+      <a href="https://wa.me/4915144935727" target="_blank" class="btn-ghost"><i class="fab fa-whatsapp"></i> <span data-fr="Contacter sur WhatsApp" data-en="Contact on WhatsApp">Contacter sur WhatsApp</span></a>
+      <a href="partner.html" class="btn-ghost" style="border-color:rgba(58,143,163,.6);color:#4aadc4"><i class="fas fa-home"></i> <span data-fr="Louer votre bien" data-en="Host your property">Louer votre bien</span></a>
+    </div>
+  </div>
+  <div class="h-scroll"><i class="fas fa-chevron-down"></i><span data-fr="Découvrir" data-en="Discover">Découvrir</span></div>
+  <div class="hero-wave"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" width="100%" height="80"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f7f4ef"/></svg></div>
+</section>
+
+<!-- ─── STATS ─── -->
+<div class="stats">
+  <div class="stat"><span class="stat-n">3</span><span class="stat-l" data-fr="Appartements" data-en="Apartments">Appartements</span></div>
+  <div class="stat"><span class="stat-n">★ 9.8</span><span class="stat-l" data-fr="Note Booking.com" data-en="Booking.com Rating">Note Booking.com</span></div>
+  <div class="stat"><span class="stat-n">100%</span><span class="stat-l" data-fr="Clients Satisfaits" data-en="Happy Guests">Clients Satisfaits</span></div>
+  <div class="stat"><span class="stat-n">24/7</span><span class="stat-l" data-fr="Support WhatsApp" data-en="WhatsApp Support">Support WhatsApp</span></div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="container">
+    <div class="about-g">
+      <div class="about-b fi">
+        <span class="tag" data-fr="Notre Histoire" data-en="Our Story">Notre Histoire</span>
+        <h2 class="sec-title" data-fr="Bienvenue chez Hammamet Appartement Rental" data-en="Welcome to Hammamet Appartement Rental">Bienvenue chez<br>Hammamet Appartement Rental</h2>
+        <div class="divider"></div>
+        <p data-fr="Nous proposons des appartements soigneusement sélectionnés à Hammamet — l'une des plus belles destinations de la Méditerranée. Chaque bien est pensé pour vous offrir confort, élégance et authenticité tunisienne." data-en="We offer carefully selected apartments in Hammamet — one of the Mediterranean's most beautiful destinations. Each property is designed to offer comfort, elegance and Tunisian authenticity.">Nous proposons des appartements soigneusement sélectionnés à Hammamet — l'une des plus belles destinations de la Méditerranée. Chaque bien est pensé pour vous offrir confort, élégance et authenticité tunisienne.</p>
+        <p data-fr="Que vous arriviez en famille, en couple ou entre amis, vous trouverez l'appartement idéal à quelques minutes de la plage, des restaurants et de la Médina de Hammamet." data-en="Whether you arrive as a family, a couple or with friends, you will find the ideal apartment just minutes from the beach, restaurants and the Hammamet Medina.">Que vous arriviez en famille, en couple ou entre amis, vous trouverez l'appartement idéal à quelques minutes de la plage, des restaurants et de la Médina de Hammamet.</p>
+        <div class="feats">
+          <div class="feat"><i class="fas fa-wifi"></i><span data-fr="WiFi Gratuit" data-en="Free WiFi">WiFi Gratuit</span></div>
+          <div class="feat"><i class="fas fa-snowflake"></i><span data-fr="Climatisation" data-en="Air Conditioning">Climatisation</span></div>
+          <div class="feat"><i class="fas fa-car"></i><span data-fr="Parking Privé" data-en="Private Parking">Parking Privé</span></div>
+          <div class="feat"><i class="fas fa-utensils"></i><span data-fr="Cuisine Équipée" data-en="Equipped Kitchen">Cuisine Équipée</span></div>
+          <div class="feat"><i class="fas fa-shield-alt"></i><span data-fr="Résidence Sécurisée" data-en="Secure Residence">Résidence Sécurisée</span></div>
+          <div class="feat"><i class="fas fa-umbrella-beach"></i><span data-fr="Proche Plage" data-en="Near the Beach">Proche Plage</span></div>
+        </div>
+      </div>
+      <div class="about-vis fi fi-d1">
+        <div class="about-img">
+          <img src="hammamet-main.jpg" alt="Vue sur Hammamet — terrasse avec vue mer" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROPERTIES ─── -->
+<section id="properties">
+  <div class="container">
+    <div class="props-head fi">
+      <span class="tag" data-fr="Nos Appartements" data-en="Our Apartments">Nos Appartements</span>
+      <h2 class="sec-title" data-fr="Trois Appartements à Hammamet" data-en="Three Apartments in Hammamet">Trois Appartements à Hammamet</h2>
+      <div class="divider center"></div>
+      <p data-fr="Cliquez sur un appartement pour voir les photos, les détails et réserver directement." data-en="Click on an apartment to see photos, details and book directly.">Cliquez sur un appartement pour voir les photos, les détails et réserver directement.</p>
+    </div>
+    <div class="props-grid" id="props-grid">
+      <!-- Cards rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── PARTNER CTA ─── -->
+<section id="partner-cta">
+  <div class="container">
+    <div class="pcta-g">
+      <div class="fi">
+        <div class="pcta-tag">&#10022; <span data-fr="Espace Partenaire" data-en="Partner Program">Espace Partenaire</span></div>
+        <h2 class="pcta-title">
+          <span data-fr="Vous avez un bien" data-en="Do you have a property">Vous avez un bien</span><br>
+          <em class="acc" data-fr="a Hammamet ?" data-en="in Hammamet?">a Hammamet ?</em>
+        </h2>
+        <p class="pcta-sub">Rejoignez notre reseau de partenaires et generez des revenus en louant votre appartement. Tableau de bord dedie, gestion des reservations, upload de photos.</p>
+        <div class="pcta-feats">
+          <div class="pcta-feat"><i class="fas fa-tachometer-alt"></i><span>Tableau de bord partenaire</span></div>
+          <div class="pcta-feat"><i class="fas fa-calendar-check"></i><span>Gestion des reservations</span></div>
+          <div class="pcta-feat"><i class="fas fa-camera"></i><span>Upload de photos</span></div>
+          <div class="pcta-feat"><i class="fas fa-chart-line"></i><span>Suivi des revenus</span></div>
+          <div class="pcta-feat"><i class="fas fa-shield-alt"></i><span>100% gratuit</span></div>
+          <div class="pcta-feat"><i class="fas fa-headset"></i><span>Support WhatsApp</span></div>
+        </div>
+        <a href="partner.html" class="btn-host"><i class="fas fa-home"></i> <span data-fr="Proposer mon bien" data-en="List my property">Proposer mon bien</span></a>
+      </div>
+      <div class="pcta-visual fi fi-d1">
+        <div class="pcta-cards">
+          <div class="pcta-card"><div class="pcta-card-icon"><i class="fas fa-plus-circle"></i></div><div class="pcta-card-text"><strong>Publiez votre bien en 5 min</strong><span>Formulaire simple et rapide</span></div></div>
+          <div class="pcta-card"><div class="pcta-card-icon"><i class="fas fa-inbox"></i></div><div class="pcta-card-text"><strong>Recevez des demandes</strong><span>Acceptez ou refusez en un clic</span></div></div>
+          <div class="pcta-card"><div class="pcta-card-icon"><i class="fas fa-calendar-alt"></i></div><div class="pcta-card-text"><strong>Gerez vos disponibilites</strong><span>Calendrier interactif par bien</span></div></div>
+        </div>
+        <div class="pcta-earnings"><span class="big">100%</span><span class="lbl">Inscription gratuite</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-g">
+      <div class="fi">
+        <span class="tag" style="color:rgba(191,155,87,.8);" data-fr="Nous Contacter" data-en="Contact Us">Nous Contacter</span>
+        <h2 class="sec-title light" data-fr="Nous Contacter" data-en="Get in Touch">Nous Contacter</h2>
+        <div class="divider"></div>
+        <div class="ci-list">
+          <div class="ci">
+            <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="ci-det">
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/4915144935727" target="_blank">+49 151 44935727</a>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+            <div class="ci-det">
+              <strong>Email</strong>
+              <a href="mailto:wassimferchichi747@gmail.com">wassimferchichi747@gmail.com</a>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="ci-det">
+              <strong data-fr="Localisation" data-en="Location">Localisation</strong>
+              <span data-fr="Hammamet, Nabeul Governorate, Tunisie" data-en="Hammamet, Nabeul Governorate, Tunisia">Hammamet, Nabeul Governorate, Tunisie</span>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fas fa-clock"></i></div>
+            <div class="ci-det">
+              <strong data-fr="Disponibilité" data-en="Availability">Disponibilité</strong>
+              <span data-fr="7j/7 — Réponse sous 24h" data-en="7 days/week — Reply within 24h">7j/7 — Réponse sous 24h</span>
+            </div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://wa.me/4915144935727" class="soc" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="soc"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="soc"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="map-f fi fi-d1">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51112.99!2d10.5644!3d36.3978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd88a85e1a9c1b%3A0x9f42b1e8d11dcaed!2sHammamet%2C%20Tunisia!5e0!3m2!1sfr!2stn!4v1699999999999" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Hammamet, Tunisia"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <strong>Hammamet Appartement Rental</strong> — <span data-fr="Hammamet, Tunisie · Tous droits réservés" data-en="Hammamet, Tunisia · All rights reserved">Hammamet, Tunisie · Tous droits réservés</span></p>
+</footer>
+
+<!-- ─── FLOATING WhatsApp ─── -->
+<a href="https://wa.me/4915144935727" target="_blank" class="wa-float" title="WhatsApp">
+  <div class="wa-pulse"></div>
+  <i class="fab fa-whatsapp"></i>
+</a>
+<!-- Admin : accédez via admin.html (ne pas lier depuis le site public) -->
+
+<!-- ═══════════════════════════════════════
+     PROPERTY DETAIL MODAL
+═══════════════════════════════════════ -->
+<div class="modal-ov" id="prop-modal">
+  <div class="prop-modal">
+    <button class="pm-close" onclick="closeModal('prop-modal')">✕</button>
+    <!-- Gallery -->
+    <div class="pm-gallery" id="pm-gallery">
+      <div id="pm-main-wrap" style="width:100%;position:relative;display:flex;align-items:center;justify-content:center;background:#0a1a2e">
+        <div class="pm-gallery-ph" id="pm-ph"><i class="fas fa-camera"></i><small>Photos</small></div>
+      </div>
+      <button class="gal-arrow gal-prev" id="gal-prev" onclick="galNav(-1)" style="display:none"><i class="fas fa-chevron-left"></i></button>
+      <button class="gal-arrow gal-next" id="gal-next" onclick="galNav(1)" style="display:none"><i class="fas fa-chevron-right"></i></button>
+      <div class="gal-counter" id="gal-counter" style="display:none"></div>
+      <div class="gal-thumbs" id="gal-thumbs" style="display:none"></div>
+    </div>
+    <!-- Body -->
+    <div class="pm-body">
+      <div class="pm-header">
+        <div>
+          <div id="pm-badge" class="p-badge" style="position:relative;top:auto;left:auto;display:inline-block;margin-bottom:.5rem;font-size:.7rem;padding:.25rem .8rem;border-radius:3px;background:var(--gold);color:#fff;font-weight:700;letter-spacing:.08em;text-transform:uppercase"></div>
+          <h2 class="pm-title" id="pm-title"></h2>
+        </div>
+        <div class="pm-score-big"><span class="sn" id="pm-score"></span><span class="sl" data-fr="Booking.com" data-en="Booking.com">Booking.com</span></div>
+      </div>
+      <div class="pm-meta">
+        <div class="pm-meta-item"><i class="fas fa-map-marker-alt"></i><span id="pm-loc"></span></div>
+        <div class="pm-meta-item"><i class="fas fa-bed"></i><span id="pm-beds"></span></div>
+        <div class="pm-meta-item"><i class="fas fa-bath"></i><span id="pm-baths"></span></div>
+        <div class="pm-meta-item"><i class="fas fa-users"></i><span id="pm-guests"></span></div>
+      </div>
+      <p class="pm-desc-full" id="pm-desc"></p>
+      <div class="pm-amenities" id="pm-amenities"></div>
+      <div class="pm-book-bar">
+        <div class="pm-price-display">
+          <span class="a" id="pm-price-disp">--</span>
+          <span class="b"> TND<span data-fr="/nuit" data-en="/night">/nuit</span></span>
+          <div style="font-size:.75rem;color:var(--mid);margin-top:.2rem;" data-fr="Prix à partir de / Saison estivale sur demande" data-en="From price / Summer season on request" id="pm-price-note">Prix à partir de / Saison estivale sur demande</div>
+        </div>
+        <button class="btn-book-now" onclick="openBookingModal()">
+          <i class="fas fa-calendar-alt"></i>
+          <span data-fr="Réserver maintenant" data-en="Book Now">Réserver maintenant</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     BOOKING CALENDAR MODAL
+═══════════════════════════════════════ -->
+<div class="modal-ov" id="book-modal">
+  <div class="book-modal">
+    <div class="bm-header">
+      <div>
+        <h3 data-fr="Réservation" data-en="Booking">Réservation</h3>
+        <div class="bm-apt-name" id="bm-apt-name"></div>
+      </div>
+      <button class="bm-close" onclick="closeModal('book-modal')">✕</button>
+    </div>
+    <div class="bm-body">
+      <!-- Calendar navigation -->
+      <div class="cal-nav-row">
+        <button class="cal-nav-btn" onclick="calNav(-1)"><i class="fas fa-chevron-left"></i></button>
+        <span style="font-size:.9rem;font-weight:600;color:var(--mid);" data-fr="Sélectionnez vos dates d'arrivée et de départ" data-en="Select your check-in and check-out dates">Sélectionnez vos dates d'arrivée et de départ</span>
+        <button class="cal-nav-btn" onclick="calNav(1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+
+      <!-- Two months -->
+      <div class="cal-months" id="cal-months-wrap">
+        <div>
+          <div class="cal-month-title" id="cal-t1"></div>
+          <div class="cal-grid" id="cal-dh1"></div>
+          <div class="cal-grid" id="cal-m1"></div>
+        </div>
+        <div>
+          <div class="cal-month-title" id="cal-t2"></div>
+          <div class="cal-grid" id="cal-dh2"></div>
+          <div class="cal-grid" id="cal-m2"></div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="cal-legend">
+        <div class="cl-item"><div class="cl-dot avail"></div><span data-fr="Disponible" data-en="Available">Disponible</span></div>
+        <div class="cl-item"><div class="cl-dot booked"></div><span data-fr="Réservé" data-en="Booked">Réservé</span></div>
+        <div class="cl-item"><div class="cl-dot selected"></div><span data-fr="Sélectionné" data-en="Selected">Sélectionné</span></div>
+        <div class="cl-item"><div class="cl-dot range"></div><span data-fr="Période" data-en="Period">Période</span></div>
+      </div>
+
+      <!-- Error -->
+      <div class="cal-err" id="cal-err" data-fr="⚠ Cette période contient des dates déjà réservées. Veuillez choisir d'autres dates." data-en="⚠ This period contains already booked dates. Please choose other dates.">⚠ Cette période contient des dates déjà réservées. Veuillez choisir d'autres dates.</div>
+
+      <!-- Selected dates display -->
+      <div class="date-sel-info">
+        <div class="dsi-item">
+          <div class="dsi-label" data-fr="Arrivée" data-en="Check-in">Arrivée</div>
+          <div class="dsi-val" id="dsi-in" data-fr="Cliquez une date" data-en="Click a date">Cliquez une date</div>
+        </div>
+        <div class="dsi-item">
+          <div class="dsi-label" data-fr="Départ" data-en="Check-out">Départ</div>
+          <div class="dsi-val" id="dsi-out" data-fr="—" data-en="—">—</div>
+        </div>
+        <div id="confirm-dates-wrap" style="display:none;flex:0 0 auto;align-self:center;">
+          <button id="confirm-dates-btn" onclick="confirmDates()" style="background:var(--gold);color:#fff;border:none;padding:.75rem 1.5rem;border-radius:4px;font-size:.85rem;font-weight:700;letter-spacing:.06em;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:.5rem;white-space:nowrap;font-family:'Jost',sans-serif;">
+            <i class="fas fa-check-circle"></i>
+            <span data-fr="Confirmer les dates" data-en="Confirm dates">Confirmer les dates</span>
+          </button>
+          <button onclick="resetDates()" style="background:none;border:none;color:var(--mid);font-size:.72rem;cursor:pointer;margin-top:.4rem;display:block;text-align:center;font-family:'Jost',sans-serif;text-decoration:underline;" data-fr="Réinitialiser" data-en="Reset">Réinitialiser</button>
+        </div>
+      </div>
+
+      <!-- Price summary -->
+      <div class="price-summary" id="price-summary">
+        <div class="ps-row"><span data-fr="Nombre de nuits" data-en="Number of nights">Nombre de nuits</span><span class="v"><span id="ps-nights">0</span> <span data-fr="nuits" data-en="nights">nuits</span></span></div>
+        <div class="ps-row"><span data-fr="Prix moyen / nuit" data-en="Average price / night">Prix moyen / nuit</span><span class="v"><span id="ps-avg">0</span> TND</span></div>
+        <div class="ps-row total"><span data-fr="💰 Total" data-en="💰 Total">💰 Total</span><span class="v"><span id="ps-total">0</span> TND</span></div>
+      </div>
+
+      <!-- Booking form (appears after dates selected) -->
+      <div class="book-form-section" id="bform-section">
+        <h3 class="book-form-title" data-fr="Vos coordonnées" data-en="Your details">Vos coordonnées</h3>
+        <div class="bf-grid">
+          <div class="fg"><label data-fr="Nom complet *" data-en="Full name *">Nom complet *</label><input type="text" id="bf-name" placeholder="Ahmed Ben Ali" required></div>
+          <div class="fg"><label data-fr="Email *" data-en="Email *">Email *</label><input type="email" id="bf-email" placeholder="email@example.com" required></div>
+          <div class="fg"><label data-fr="Téléphone / WhatsApp" data-en="Phone / WhatsApp">Téléphone / WhatsApp</label><input type="tel" id="bf-phone" placeholder="+216..."></div>
+          <div class="fg"><label data-fr="Nombre de personnes" data-en="Number of guests">Nombre de personnes</label><select id="bf-guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option value="7+">7+</option></select></div>
+        </div>
+        <div class="fg"><label data-fr="Message (optionnel)" data-en="Message (optional)">Message (optionnel)</label><textarea id="bf-msg" rows="3" placeholder="Questions, demandes spéciales..."></textarea></div>
+        <button class="submit-btn" id="submit-btn" onclick="submitBooking()">
+          <i class="fas fa-paper-plane"></i>
+          <span data-fr="Confirmer la Réservation" data-en="Confirm Booking">Confirmer la Réservation</span>
+        </button>
+        <p class="form-note" data-fr="→ Un email de confirmation vous sera envoyé. Nous vous contacterons sous 24h." data-en="→ A confirmation email will be sent to you. We will contact you within 24h.">→ Un email de confirmation vous sera envoyé. Nous vous contacterons sous 24h.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CONFIRMATION MODAL
+═══════════════════════════════════════ -->
+<div class="modal-ov" id="confirm-modal">
+  <div class="confirm-modal">
+    <div class="confirm-icon"><i class="fas fa-check"></i></div>
+    <h3 data-fr="Demande Envoyée !" data-en="Request Sent!">Demande Envoyée !</h3>
+    <p data-fr="Votre demande de réservation a bien été reçue. Nous vous contacterons sous 24h pour confirmer votre séjour." data-en="Your booking request has been received. We will contact you within 24h to confirm your stay.">Votre demande de réservation a bien été reçue. Nous vous contacterons sous 24h pour confirmer votre séjour.</p>
+    <div class="confirm-details" id="confirm-details"></div>
+    <button class="btn-close-confirm" onclick="closeConfirm()" data-fr="Fermer" data-en="Close">Fermer</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     AUTH MODAL (Login / Register)
+═══════════════════════════════════════ -->
+<div class="modal-ov" id="auth-modal">
+  <div class="auth-modal">
+    <button class="auth-close" onclick="closeModal('auth-modal')">✕</button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">
+        <i class="fas fa-sign-in-alt"></i> <span data-fr="Connexion" data-en="Sign In">Connexion</span>
+      </button>
+      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">
+        <i class="fas fa-user-plus"></i> <span data-fr="Inscription" data-en="Register">Inscription</span>
+      </button>
+    </div>
+    <!-- Login -->
+    <div class="auth-body" id="login-panel">
+      <h2 class="auth-title" data-fr="Bienvenue !" data-en="Welcome back!">Bienvenue !</h2>
+      <p class="auth-sub" data-fr="Connectez-vous pour gérer vos réservations." data-en="Sign in to manage your bookings.">Connectez-vous pour gérer vos réservations.</p>
+      <div class="auth-err" id="login-err"></div>
+      <div class="auth-fg"><label data-fr="Email" data-en="Email">Email</label><input type="email" id="li-email" placeholder="votre@email.com"></div>
+      <div class="auth-fg"><label data-fr="Mot de passe" data-en="Password">Mot de passe</label><input type="password" id="li-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doSignIn()"></div>
+      <button class="auth-btn" onclick="doSignIn()"><i class="fas fa-sign-in-alt"></i> <span data-fr="Se connecter" data-en="Sign In">Se connecter</span></button>
+      <p style="text-align:center;font-size:.76rem;color:var(--mid);margin-top:.9rem;cursor:pointer" onclick="switchAuthTab('register')">
+        <span data-fr="Pas encore de compte ? " data-en="No account? ">Pas encore de compte ? </span><span style="color:var(--teal);font-weight:600" data-fr="Créer un compte →" data-en="Create one →">Créer un compte →</span>
+      </p>
+    </div>
+    <!-- Register -->
+    <div class="auth-body" id="register-panel" style="display:none">
+      <h2 class="auth-title" data-fr="Créer un compte" data-en="Create an account">Créer un compte</h2>
+      <p class="auth-sub" data-fr="Suivez vos réservations et gérez vos séjours." data-en="Track your bookings and manage your stays.">Suivez vos réservations et gérez vos séjours.</p>
+      <div class="auth-err" id="reg-err"></div>
+      <div class="auth-fg"><label data-fr="Nom complet" data-en="Full name">Nom complet</label><input type="text" id="reg-name" placeholder="Ahmed Ben Ali"></div>
+      <div class="auth-fg"><label>Email</label><input type="email" id="reg-email" placeholder="votre@email.com"></div>
+      <div class="auth-fg"><label data-fr="Mot de passe" data-en="Password">Mot de passe</label><input type="password" id="reg-pw" placeholder="6 caractères minimum" onkeydown="if(event.key==='Enter')doRegister()"></div>
+      <button class="auth-btn" onclick="doRegister()"><i class="fas fa-user-plus"></i> <span data-fr="Créer mon compte" data-en="Create my account">Créer mon compte</span></button>
+      <p style="text-align:center;font-size:.76rem;color:var(--mid);margin-top:.9rem;cursor:pointer" onclick="switchAuthTab('login')">
+        <span data-fr="Déjà un compte ? " data-en="Already have an account? ">Déjà un compte ? </span><span style="color:var(--teal);font-weight:600" data-fr="Se connecter →" data-en="Sign in →">Se connecter →</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ACCOUNT DASHBOARD MODAL
+═══════════════════════════════════════ -->
+<div class="modal-ov" id="account-modal">
+  <div class="account-modal">
+    <div class="acm-header">
+      <div>
+        <h3><i class="fas fa-user-circle" style="color:var(--gold-l);margin-right:.4rem"></i> <span data-fr="Mon Compte" data-en="My Account">Mon Compte</span></h3>
+        <div class="acm-user-info" id="acm-user-info"></div>
+      </div>
+      <button class="acm-close" onclick="closeModal('account-modal')">✕</button>
+    </div>
+    <div class="acm-body">
+      <div class="acm-stats">
+        <div class="acm-stat"><div class="n" id="acm-total">0</div><div class="l" data-fr="Réservations" data-en="Bookings">Réservations</div></div>
+        <div class="acm-stat"><div class="n" id="acm-pending">0</div><div class="l" data-fr="En attente" data-en="Pending">En attente</div></div>
+        <div class="acm-stat"><div class="n" id="acm-confirmed">0</div><div class="l" data-fr="Confirmées" data-en="Confirmed">Confirmées</div></div>
+      </div>
+      <div class="acm-section-title"><i class="fas fa-calendar-check"></i> <span data-fr="Mes Réservations" data-en="My Bookings">Mes Réservations</span></div>
+      <div id="acm-reservations"></div>
+      <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border)">
+        <button class="acm-logout" onclick="doSignOut()"><i class="fas fa-sign-out-alt"></i> <span data-fr="Déconnexion" data-en="Sign out">Déconnexion</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+// ════════════════════════════════════════════
+// CONFIG — Modifiez ici pour changer vos infos
+// ════════════════════════════════════════════
+const ADMIN_PW   = 'hammamet2025';           // Changez ce mot de passe !
+const OWNER_WA   = '4915144935727';          // Votre WhatsApp (sans +)
+const OWNER_EMAIL= 'wassimferchichi747@gmail.com'; // Votre email
+
+// ════════════════════════════════════════════
+// APARTMENT DATA
+// ════════════════════════════════════════════
+const APTS = [
+  {
+    name:'Cosy Apartment Near the Sea',
+    badge:{fr:'Coup de Cœur',en:'Top Pick'},
+    score:'9.8',
+    zone:{fr:'Hammamet Sud',en:'Hammamet Sud'},
+    loc:{fr:'1.9 km des plages de Hammamet',en:'1.9 km from Hammamet beaches'},
+    desc:{
+      fr:'Un appartement chaleureux et parfaitement équipé à Hammamet Sud. Jardin verdoyant, terrasse privée et parking individuel. Les hôtes vivent dans l\'immeuble et sont disponibles à tout moment. Noté 9.8/10 sur Booking.com.',
+      en:'A warm and perfectly equipped apartment in Hammamet Sud. Lush garden, private terrace and individual parking. Hosts live in the building and are available at all times. Rated 9.8/10 on Booking.com.'
+    },
+    beds:2, baths:1, guests:4,
+    amenities:[
+      {icon:'fa-wifi',fr:'WiFi Gratuit',en:'Free WiFi'},
+      {icon:'fa-snowflake',fr:'Climatisation',en:'Air Conditioning'},
+      {icon:'fa-car',fr:'Parking Privé',en:'Private Parking'},
+      {icon:'fa-tree',fr:'Jardin Privé',en:'Private Garden'},
+      {icon:'fa-sun',fr:'Terrasse',en:'Terrace'},
+      {icon:'fa-utensils',fr:'Cuisine Équipée',en:'Equipped Kitchen'},
+    ],
+    tags:[
+      {icon:'fa-wifi',fr:'WiFi',en:'WiFi'},
+      {icon:'fa-snowflake',fr:'Clim',en:'AC'},
+      {icon:'fa-car',fr:'Parking',en:'Parking'},
+      {icon:'fa-tree',fr:'Jardin',en:'Garden'},
+      {icon:'fa-sun',fr:'Terrasse',en:'Terrace'},
+    ],
+    basePrice:320, peakPrice:390,
+    // PHOTOS APT 1: Remplacez null par 'chemin/vers/photo.jpg'
+    images:[null,null,null,null,null],
+  },
+  {
+    name:'Charming 2BR · Garden & Balcony',
+    badge:{fr:'Vue Jardin',en:'Garden View'},
+    score:'9.6',
+    zone:{fr:'Hammamet',en:'Hammamet'},
+    loc:{fr:'Hammamet, proche de la plage',en:'Hammamet, close to the beach'},
+    desc:{
+      fr:'Appartement spacieux avec 2 chambres, salon lumineux, cuisine équipée (four, micro-onde), 1 salle de bain et balcon avec vue sur le jardin. Parquet, TV satellite, WiFi. Idéal pour les familles ou les couples.',
+      en:'Spacious apartment with 2 bedrooms, bright living room, equipped kitchen (oven, microwave), 1 bathroom and balcony with garden view. Parquet floors, satellite TV, WiFi. Ideal for families or couples.'
+    },
+    beds:2, baths:1, guests:5,
+    amenities:[
+      {icon:'fa-wifi',fr:'WiFi Gratuit',en:'Free WiFi'},
+      {icon:'fa-snowflake',fr:'Climatisation',en:'Air Conditioning'},
+      {icon:'fa-tv',fr:'TV Satellite',en:'Satellite TV'},
+      {icon:'fa-bath',fr:'1 Salle de Bain',en:'1 Bathroom'},
+      {icon:'fa-leaf',fr:'Vue sur le Jardin',en:'Garden View'},
+      {icon:'fa-wind',fr:'Balcon',en:'Balcony'},
+    ],
+    tags:[
+      {icon:'fa-wifi',fr:'WiFi',en:'WiFi'},
+      {icon:'fa-snowflake',fr:'Clim',en:'AC'},
+      {icon:'fa-tv',fr:'TV Sat.',en:'Sat. TV'},
+      {icon:'fa-bath',fr:'1 SDB',en:'1 Bath'},
+      {icon:'fa-leaf',fr:'Vue Jardin',en:'Garden View'},
+    ],
+    basePrice:320, peakPrice:390,
+    // PHOTOS APT 2: Remplacez null par 'chemin/vers/photo.jpg'
+    images:[null,null,null,null,null],
+  },
+  {
+    name:'Charming Modern 3BR · Terrace',
+    badge:{fr:'Coup de Cœur',en:'Top Pick'},
+    score:'9.7',
+    zone:{fr:'Hammamet',en:'Hammamet'},
+    loc:{fr:'Hammamet, avec terrasse privée',en:'Hammamet, with private terrace'},
+    desc:{
+      fr:'Grand appartement moderne avec 3 chambres, 1 salle de bain, cuisine entièrement équipée avec machine à laver, TV satellite, linge de lit et serviettes inclus, et une belle terrasse privée. Entrée privée indépendante.',
+      en:'Large modern apartment with 3 bedrooms, 1 bathroom, fully equipped kitchen with washing machine, satellite TV, bed linen and towels included, and a beautiful private terrace. Independent private entrance.'
+    },
+    beds:3, baths:1, guests:8,
+    amenities:[
+      {icon:'fa-wifi',fr:'WiFi Gratuit',en:'Free WiFi'},
+      {icon:'fa-snowflake',fr:'Climatisation',en:'Air Conditioning'},
+      {icon:'fa-sun',fr:'Terrasse Privée',en:'Private Terrace'},
+      {icon:'fa-bath',fr:'1 Salle de Bain',en:'1 Bathroom'},
+      {icon:'fa-tshirt',fr:'Machine à Laver',en:'Washing Machine'},
+      {icon:'fa-satellite-dish',fr:'TV Satellite',en:'Satellite TV'},
+    ],
+    tags:[
+      {icon:'fa-wifi',fr:'WiFi',en:'WiFi'},
+      {icon:'fa-snowflake',fr:'Clim',en:'AC'},
+      {icon:'fa-sun',fr:'Terrasse',en:'Terrace'},
+      {icon:'fa-bath',fr:'1 SDB',en:'1 Bath'},
+      {icon:'fa-door-open',fr:'Entrée Privée',en:'Private Entrance'},
+    ],
+    basePrice:390, peakPrice:490,
+    // PHOTOS APT 3: Remplacez null par 'chemin/vers/photo.jpg'
+    images:[null,null,null,null,null],
+  }
+];
+
+// ════════════════════════════════════════════
+// FIRESTORE CALENDAR CACHE (replaces localStorage + DEMO_BOOKINGS)
+// ════════════════════════════════════════════
+// Loaded from Firestore when opening booking modal
+let _calCache = {};     // {apt: {dateStr: {s,p}}} — availability + blocked dates
+let _aptPrices = {};    // {apt: basePrice} — from Firestore apt_settings
+
+// ════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════
+let lang='fr';
+let curApt=0;          // current apt in modals
+let calY=new Date().getFullYear(), calM=new Date().getMonth();
+let checkIn=null, checkOut=null, hoverDate=null;
+// Admin: voir admin.html
+let clickTimers={};
+let galleryIdx=0;
+
+const MFR=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const MEN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DFR=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+const DEN=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+// ════════════════════════════════════════════
+// STORAGE
+// ════════════════════════════════════════════
+// gd()/sd() removed — data now stored in Firestore
+// Kept as stubs to avoid reference errors from any remaining calls
+function gd(){return {}}
+function sd(d){}
+function ds(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function fromDs(s){const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)}
+
+
+// ════════════════════════════════════════════
+// IMAGE HELPERS — reads images from Firestore (all devices)
+// ════════════════════════════════════════════
+// In-memory cache for apt images (loaded from Firestore)
+let _aptImgsCache = {}; // {0:[], 1:[], 2:[]}
+
+function getAptImages(apt){
+  // Return from in-memory cache (populated from Firestore on load)
+  return _aptImgsCache[apt]||[];
+}
+
+// Load all 3 apt images from Firestore into memory cache, then re-render
+async function loadAptImagesFromFirestore(){
+  if(!db) return;
+  try{
+    let updated=false;
+    for(let i=0;i<3;i++){
+      const snap=await db.collection('apt_images').doc('apt_'+i).get();
+      if(snap.exists){
+        const imgs=snap.data().images||[];
+        if(imgs.length){ _aptImgsCache[i]=imgs; updated=true; }
+      }
+    }
+    if(updated) {} // renderPropertyCards called by DOMContentLoaded after this
+  }catch(e){console.warn('Load apt images:',e);}
+}
+
+// ════════════════════════════════════════════
+// LANGUAGE
+// ════════════════════════════════════════════
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+  document.querySelectorAll('[data-fr]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(!v)return;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;
+    else if(!el.children.length)el.textContent=v;
+  });
+  renderPropertyCards();
+}
+
+// ════════════════════════════════════════════
+// NAV
+// ════════════════════════════════════════════
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>80));
+function toggleMob(){document.getElementById('mob').classList.toggle('open')}
+function closeMob(){document.getElementById('mob').classList.remove('open')}
+
+// ════════════════════════════════════════════
+// PARTICLES
+// ════════════════════════════════════════════
+(()=>{
+  const c=document.getElementById('particles');
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');p.className='pp';
+    const s=20+Math.random()*70;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${15+Math.random()*25}s;animation-delay:${Math.random()*15}s;opacity:.35;`;
+    c.appendChild(p);
+  }
+})();
+
+// ════════════════════════════════════════════
+// FADE IN
+// ════════════════════════════════════════════
+(()=>{
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.1});
+  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+})();
+
+// ════════════════════════════════════════════
+// AVAILABILITY & PRICE HELPERS
+// ════════════════════════════════════════════
+function getDayStatus(apt,dateStr){
+  // Read from Firestore cache (loaded when opening booking modal)
+  return _calCache[apt]?.[dateStr]?.s || 'free';
+}
+
+function getDayPrice(apt,date){
+  const dateStr=ds(date);
+  // Custom price override from Firestore
+  const cached=_calCache[apt]?.[dateStr];
+  if(cached?.p) return cached.p;
+  // Base price from Firestore apt_settings
+  const basePrice=_aptPrices[apt]||APTS[apt].basePrice;
+  const m=date.getMonth();
+  if(m===6||m===7) return Math.round(basePrice*1.5);
+  return basePrice;
+}
+
+// Load ALL calendar data for an apt from Firestore
+async function loadCalDataFromFirestore(apt){
+  if(!db) return;
+  if(!_calCache[apt]) _calCache[apt]={};
+
+  try{
+    // Load blocked/booked dates from apt_calendar
+    const calSnap=await db.collection('apt_calendar')
+      .where('aptIndex','==',apt)
+      .get();
+    calSnap.docs.forEach(d=>{
+      const data=d.data();
+      if(data.date) _calCache[apt][data.date]={s:data.status||null,p:data.customPrice||null};
+    });
+
+    // Load pending/confirmed reservations for this apt
+    const resSnap=await db.collection('reservations')
+      .where('aptIndex','==',apt)
+      .get();
+    resSnap.docs.forEach(d=>{
+      const r=d.data();
+      if(r.status==='cancelled') return;
+      if(!r.checkIn||!r.checkOut) return;
+      let cur=new Date(r.checkIn);const end=new Date(r.checkOut);
+      while(cur<end){
+        const dateStr=ds(cur);
+        if(!_calCache[apt][dateStr]) _calCache[apt][dateStr]={};
+        _calCache[apt][dateStr].s = r.status==='confirmed'?'b':'p';
+        cur.setDate(cur.getDate()+1);
+      }
+    });
+
+    // Load base price
+    const priceSnap=await db.collection('apt_settings').doc('apt_'+apt).get();
+    _aptPrices[apt]=priceSnap.exists?priceSnap.data().basePrice:APTS[apt].basePrice;
+
+  }catch(e){
+    console.warn('loadCalDataFromFirestore:',e);
+    _aptPrices[apt]=APTS[apt].basePrice;
+  }
+}
+
+function rangeHasBooked(apt,start,end){
+  let d=new Date(start);d.setDate(d.getDate()+1);
+  while(d<end){
+    const s=getDayStatus(apt,ds(d));
+    if(s==='b'||s==='p')return true;
+    d.setDate(d.getDate()+1);
+  }
+  return false;
+}
+
+function calcNights(){
+  if(!checkIn||!checkOut)return 0;
+  return Math.round((checkOut-checkIn)/86400000);
+}
+
+function calcTotal(){
+  if(!checkIn||!checkOut)return 0;
+  let total=0,d=new Date(checkIn),n=calcNights();
+  for(let i=0;i<n;i++){total+=getDayPrice(curApt,d);d.setDate(d.getDate()+1);}
+  return total;
+}
+
+// ════════════════════════════════════════════
+// PROPERTY CARDS
+// ════════════════════════════════════════════
+function renderPropertyCards(){
+  const container=document.getElementById('props-grid');
+  container.innerHTML='';
+  const d=gd();
+  APTS.forEach((apt,i)=>{
+    const baseP=d[`base_${i}`]||apt.basePrice;
+    const card=document.createElement('div');
+    card.className='prop-card fi'+(i===1?' fi-d1':i===2?' fi-d2':'');
+    card.onclick=()=>openPropModal(i);
+    const tagsHtml=apt.tags.map(t=>`<span class="ptag"><i class="fas ${t.icon}"></i>${t[lang]}</span>`).join('');
+    const aptImgs=getAptImages(i);
+    const firstImg=aptImgs[0]||apt.images[0];
+    const imgHtml=firstImg
+      ?`<img src="${firstImg}" alt="${apt.name}">`
+      :`<div class="prop-img-ph"><i class="fas fa-camera"></i><span>${lang==='fr'?'📸 Photo Appartement '+(i+1):'📸 Apartment '+(i+1)+' Photo'}</span></div>`;
+    card.innerHTML=`
+      <div class="prop-img">
+        ${imgHtml}
+        <div class="p-badge">${apt.badge[lang]}</div>
+        <div class="p-score"><i class="fas fa-star"></i>${apt.score}</div>
+      </div>
+      <div class="prop-body">
+        <div class="p-zone">${apt.zone[lang]}</div>
+        <h3 class="p-name">${apt.name}</h3>
+        <div class="p-loc"><i class="fas fa-map-marker-alt"></i><span>${apt.loc[lang]}</span></div>
+        <p class="p-desc">${apt.desc[lang].substring(0,120)}...</p>
+        <div class="p-tags">${tagsHtml}</div>
+        <div class="p-foot">
+          <div>
+            <div class="p-price"><span class="amt">${baseP}</span><span class="per"> TND/${lang==='fr'?'nuit':'night'}</span></div>
+            <div class="p-cap">
+              <span><i class="fas fa-bed"></i>${apt.beds}</span>
+              <span><i class="fas fa-bath"></i>${apt.baths}</span>
+              <span><i class="fas fa-users"></i>${apt.guests}</span>
+            </div>
+          </div>
+          <button class="btn-detail" onclick="event.stopPropagation();openPropModal(${i})">
+            <i class="fas fa-eye"></i>${lang==='fr'?'Voir':'View'}
+          </button>
+        </div>
+      </div>`;
+    container.appendChild(card);
+  });
+  // Trigger fade-in observer on new cards
+  document.querySelectorAll('.prop-card.fi:not(.in)').forEach(el=>{
+    setTimeout(()=>el.classList.add('in'),100+APTS.indexOf(APTS[0])*100);
+  });
+  setTimeout(()=>document.querySelectorAll('.prop-card.fi').forEach(el=>el.classList.add('in')),200);
+}
+
+// ════════════════════════════════════════════
+// PROPERTY MODAL
+// ════════════════════════════════════════════
+function openPropModal(idx){
+  _curFsProp=null; // Ensure FS mode is cleared for hardcoded properties
+  curApt=idx;
+  const apt=APTS[idx];
+  const d=gd();
+  const baseP=d[`base_${idx}`]||apt.basePrice;
+
+  // Gallery
+  galleryIdx=0;
+  renderGallery(idx);
+
+  // Info
+  document.getElementById('pm-badge').textContent=apt.badge[lang];
+  document.getElementById('pm-title').textContent=apt.name;
+  document.getElementById('pm-score').textContent='★ '+apt.score;
+  document.getElementById('pm-loc').textContent=apt.loc[lang];
+  document.getElementById('pm-beds').textContent=apt.beds+' '+(lang==='fr'?'chambre(s)':'bedroom(s)');
+  document.getElementById('pm-baths').textContent=apt.baths+' '+(lang==='fr'?'salle(s) de bain':'bathroom(s)');
+  document.getElementById('pm-guests').textContent=apt.guests+' '+(lang==='fr'?'personnes max.':'guests max.');
+  document.getElementById('pm-desc').textContent=apt.desc[lang];
+  document.getElementById('pm-price-disp').textContent=baseP;
+
+  // Amenities
+  const amEl=document.getElementById('pm-amenities');
+  amEl.innerHTML=apt.amenities.map(a=>`<div class="pm-am"><i class="fas ${a.icon}"></i>${a[lang]}</div>`).join('');
+
+  openModal('prop-modal');
+}
+
+// ── GALLERY ENGINE ──
+let _galImgs = [];  // current gallery images
+
+function initGallery(imgs, startIdx){
+  _galImgs = imgs||[];
+  galleryIdx = Math.max(0, Math.min(startIdx||0, _galImgs.length-1));
+  renderGalleryFrame();
+}
+
+function renderGalleryFrame(){
+  const wrap  = document.getElementById('pm-main-wrap');
+  const ph    = document.getElementById('pm-ph');
+  const prev  = document.getElementById('gal-prev');
+  const next  = document.getElementById('gal-next');
+  const ctr   = document.getElementById('gal-counter');
+  const strip = document.getElementById('gal-thumbs');
+  if(!wrap) return;
+
+  if(!_galImgs.length){
+    if(ph)ph.style.display='flex';
+    [prev,next,ctr,strip].forEach(el=>{if(el)el.style.display='none';});
+    return;
+  }
+
+  // Main image
+  if(ph)ph.style.display='none';
+  let img = wrap.querySelector('.pm-gallery-main');
+  if(!img){
+    img=document.createElement('img');
+    img.className='pm-gallery-main';
+    img.style.cssText='width:100%;height:auto;max-height:520px;object-fit:contain;display:block;';
+    wrap.style.position='relative';
+    wrap.appendChild(img);
+  }
+  img.src=_galImgs[galleryIdx];
+  img.alt='Photo '+(galleryIdx+1);
+
+  // Arrows
+  if(prev)prev.style.display=_galImgs.length>1?'flex':'none';
+  if(next)next.style.display=_galImgs.length>1?'flex':'none';
+
+  // Counter badge
+  if(ctr){ctr.style.display='block';ctr.textContent=(galleryIdx+1)+' / '+_galImgs.length;}
+
+  // Thumbnail strip
+  if(strip){
+    if(_galImgs.length>1){
+      strip.style.display='flex';
+      strip.innerHTML=_galImgs.map((url,i)=>
+        `<img class="gal-thumb${i===galleryIdx?' active':''}" src="${url}" alt="" onclick="galGoTo(${i})" loading="lazy">`
+      ).join('');
+      const activeThumb=strip.children[galleryIdx];
+      if(activeThumb)setTimeout(()=>activeThumb.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'}),50);
+    } else {
+      strip.style.display='none';
+    }
+  }
+}
+
+function galNav(dir){
+  if(!_galImgs.length)return;
+  galleryIdx=(galleryIdx+dir+_galImgs.length)%_galImgs.length;
+  renderGalleryFrame();
+}
+
+function galGoTo(idx){
+  galleryIdx=idx;
+  renderGalleryFrame();
+}
+
+// Keyboard arrows when modal open
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('prop-modal')?.classList.contains('open'))return;
+  if(e.key==='ArrowLeft')galNav(-1);
+  if(e.key==='ArrowRight')galNav(1);
+});
+
+function renderGallery(idx){
+  const apt=APTS[idx];
+  const storedImgs=getAptImages(idx);
+  const allImgs=storedImgs.length?storedImgs:apt.images.filter(Boolean);
+  initGallery(allImgs, 0);
+}
+// Gallery navigation handled by galNav/galGoTo
+
+// ════════════════════════════════════════════
+// BOOKING CALENDAR
+// ════════════════════════════════════════════
+async function openBookingModal(){
+  if(_curFsProp){_openFsBookingModal();return;} // Firestore property
+  closeModal('prop-modal');
+  checkIn=null; checkOut=null; hoverDate=null;
+  calY=new Date().getFullYear(); calM=new Date().getMonth();
+  document.getElementById('bm-apt-name').textContent=APTS[curApt].name;
+  document.getElementById('dsi-in').textContent=lang==='fr'?'Cliquez une date':'Click a date';
+  document.getElementById('dsi-out').textContent='—';
+  document.getElementById('price-summary').style.display='none';
+  document.getElementById('bform-section').style.display='none';
+  document.getElementById('cal-err').classList.remove('show');
+  openModal('book-modal');
+  // Show loading while fetching from Firestore
+  document.getElementById('cal-m1').innerHTML='<div style="grid-column:1/-1;text-align:center;padding:1rem;color:var(--mid);font-size:.8rem"><i class="fas fa-spinner fa-spin"></i></div>';
+  document.getElementById('cal-m2').innerHTML='';
+  await loadCalDataFromFirestore(curApt); // Load fresh from Firestore
+  renderCal();
+}
+
+function calNav(dir){
+  calM+=dir;
+  if(calM<0){calM=11;calY--}
+  if(calM>11){calM=0;calY++}
+  renderCal();
+}
+
+function renderCal(){
+  const months=lang==='fr'?MFR:MEN;
+  const days=lang==='fr'?DFR:DEN;
+  const today=new Date();today.setHours(0,0,0,0);
+
+  document.getElementById('cal-t1').textContent=`${months[calM]} ${calY}`;
+  let m2=calM+1,y2=calY;
+  if(m2>11){m2=0;y2++}
+  document.getElementById('cal-t2').textContent=`${months[m2]} ${y2}`;
+
+  // Day headers
+  ['cal-dh1','cal-dh2'].forEach(id=>{
+    document.getElementById(id).innerHTML=days.map(d=>`<div class="cal-dh">${d}</div>`).join('');
+  });
+
+  renderMonth('cal-m1',calY,calM,today);
+  renderMonth('cal-m2',y2,m2,today);
+  // Do NOT call updatePriceSummary here — only rebuild DOM, classes are handled by applyDayClass
+}
+
+function renderMonth(containerId,year,month,today){
+  const container=document.getElementById(containerId);
+  container.innerHTML='';
+  let dow=new Date(year,month,1).getDay();
+  dow=dow===0?6:dow-1;
+  const dim=new Date(year,month+1,0).getDate();
+
+  for(let i=0;i<dow;i++){
+    const empty=document.createElement('div');
+    empty.className='dc dc-empty';
+    container.appendChild(empty);
+  }
+
+  for(let day=1;day<=dim;day++){
+    const date=new Date(year,month,day);
+    const dateStr=ds(date);
+    const status=getDayStatus(curApt,dateStr);
+    const price=getDayPrice(curApt,date);
+    const isPast=date<today;
+    const isToday=dateStr===ds(today);
+
+    const cell=document.createElement('div');
+    // store metadata on the cell for fast CSS-only updates
+    cell._date=date;
+    cell._dateStr=dateStr;
+    cell._status=status;
+    cell._isPast=isPast;
+    cell._isToday=isToday;
+    cell._price=price;
+
+    const priceEl=(status!=='b'&&status!=='p'&&!isPast)?`<div class="dc-p">${price} TND</div>`:'';
+    const crossEl=(status==='b'||status==='p')?`<div class="dc-booked-x">${status==='p'?'⏳':'✕'}</div>`:'';
+    cell.innerHTML=`<div class="dc-n">${day}</div>${priceEl}${crossEl}`;
+
+    applyDayClass(cell);
+
+    if(!isPast&&status!=='b'&&status!=='p'){
+      cell.addEventListener('click',()=>handleDayClick(cell._date));
+      cell.addEventListener('mouseenter',()=>{
+        if(checkIn&&!checkOut){
+          hoverDate=cell._date;
+          updateAllDayClasses();
+        }
+      });
+      cell.addEventListener('mouseleave',()=>{
+        if(checkIn&&!checkOut&&hoverDate){
+          hoverDate=null;
+          updateAllDayClasses();
+        }
+      });
+    }
+    container.appendChild(cell);
+  }
+}
+
+// Apply correct CSS classes to a single day cell WITHOUT rebuilding DOM
+function applyDayClass(cell){
+  const {_date:date,_dateStr:dateStr,_status:status,_isPast:isPast,_isToday:isToday}=cell;
+  const cinStr=checkIn?ds(checkIn):null;
+  const coutStr=checkOut?ds(checkOut):null;
+
+  let cls=['dc'];
+  if(isPast){
+    cls.push('dc-past');
+  } else if(status==='b'){
+    cls.push('dc-booked');
+  } else if(status==='p'){
+    cls.push('dc-pending');
+  } else {
+    if(isToday) cls.push('dc-today');
+    if(cinStr===dateStr){
+      cls.push('dc-sel-start');
+      if(coutStr===dateStr) cls.push('dc-sel-end');
+    } else if(coutStr===dateStr){
+      cls.push('dc-sel-end');
+    } else if(cinStr&&!checkOut&&hoverDate&&date>checkIn&&date<=hoverDate){
+      cls.push('dc-in-range');
+    } else if(cinStr&&coutStr&&date>checkIn&&date<checkOut){
+      cls.push('dc-in-range');
+    }
+  }
+  cell.className=cls.join(' ');
+}
+
+// Update all day cell classes without rebuilding DOM (used for hover)
+function updateAllDayClasses(){
+  ['cal-m1','cal-m2'].forEach(id=>{
+    const container=document.getElementById(id);
+    if(!container)return;
+    container.querySelectorAll('.dc:not(.dc-empty)').forEach(cell=>applyDayClass(cell));
+  });
+  updateDateDisplay();
+}
+
+function handleDayClick(date){
+  document.getElementById('cal-err').classList.remove('show');
+  if(!checkIn||(checkIn&&checkOut)){
+    // First click OR both already set: start fresh with new check-in
+    checkIn=date; checkOut=null; hoverDate=null;
+    document.getElementById('price-summary').style.display='none';
+    document.getElementById('bform-section').style.display='none';
+    document.getElementById('confirm-dates-wrap').style.display='none';
+  } else {
+    // Second click: set check-out
+    if(date<=checkIn){
+      // Clicked same or earlier date: restart
+      checkIn=date; checkOut=null; hoverDate=null;
+    } else if(rangeHasBooked(curApt,checkIn,date)){
+      document.getElementById('cal-err').classList.add('show');
+      return;
+    } else {
+      checkOut=date; hoverDate=null;
+    }
+  }
+  updateAllDayClasses();
+  updateDateDisplay();
+}
+
+function updateDateDisplay(){
+  const fmt=(d)=>{
+    if(!d)return'—';
+    const months=lang==='fr'?MFR:MEN;
+    return`${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  };
+  document.getElementById('dsi-in').textContent=checkIn?fmt(checkIn):(lang==='fr'?'Cliquez une date':'Click a date');
+  document.getElementById('dsi-out').textContent=checkOut?fmt(checkOut):(checkIn?(lang==='fr'?'Cliquez la date de départ':'Click checkout date'):'—');
+  // Show confirm button only when both dates selected
+  const wrap=document.getElementById('confirm-dates-wrap');
+  if(wrap)wrap.style.display=(checkIn&&checkOut)?'flex':'none';
+}
+
+function confirmDates(){
+  if(_curFsProp){_confirmFsDates();return;} // Firestore property
+  if(!checkIn||!checkOut)return;
+  updatePriceSummary();
+  // Scroll form into view smoothly
+  const form=document.getElementById('bform-section');
+  if(form)setTimeout(()=>form.scrollIntoView({behavior:'smooth',block:'start'}),100);
+}
+
+function resetDates(){
+  checkIn=null;checkOut=null;hoverDate=null;
+  document.getElementById('price-summary').style.display='none';
+  document.getElementById('bform-section').style.display='none';
+  document.getElementById('confirm-dates-wrap').style.display='none';
+  document.getElementById('cal-err').classList.remove('show');
+  if(_curFsProp) _renderFsCal(); // Firestore property calendar
+  else renderCal();               // Hardcoded apartment calendar
+  updateDateDisplay();
+}
+
+function updatePriceSummary(){
+  updateDateDisplay();
+  if(!checkIn||!checkOut){
+    document.getElementById('price-summary').style.display='none';
+    document.getElementById('bform-section').style.display='none';
+    return;
+  }
+  const n=calcNights();
+  const total=calcTotal();
+  const avg=Math.round(total/n);
+  document.getElementById('ps-nights').textContent=n;
+  document.getElementById('ps-avg').textContent=avg;
+  document.getElementById('ps-total').textContent=total;
+  document.getElementById('price-summary').style.display='block';
+  document.getElementById('bform-section').style.display='block';
+}
+
+// ════════════════════════════════════════════
+// EMAIL CONFIG — EmailJS (gratuit, 200 emails/mois)
+// ════════════════════════════════════════════
+// ÉTAPE 1 : Allez sur https://www.emailjs.com et créez un compte GRATUIT
+// ÉTAPE 2 : Ajoutez un "Email Service" (Gmail) → copiez votre Service ID ci-dessous
+// ÉTAPE 3 : Créez un "Email Template" avec ces variables exactes :
+//   {{to_email}} {{apt_name}} {{check_in}} {{check_out}} {{nights}}
+//   {{guests}} {{total}} {{client_name}} {{client_email}} {{client_phone}} {{client_msg}} {{ref}}
+//   Dans "To Email" du template, mettez : {{to_email}}
+// ÉTAPE 4 : Copiez votre Public Key (Account > General) ci-dessous
+// ÉTAPE 5 : Copiez votre Template ID ci-dessous
+
+const EMAILJS_PUBLIC_KEY  = 'FZ746MXOLaxgNjUV-';
+const EMAILJS_SERVICE_ID  = 'service_7b4uz5b';
+const EMAILJS_TEMPLATE_ID = 'template_kpy8n4h';
+
+// ════════════════════════════════════════════
+// SUBMIT BOOKING — envoie un email complet à wassimferchichi747@gmail.com
+// ════════════════════════════════════════════
+async function submitBooking(){
+  if(_curFsProp){await _submitFsBooking();return;} // Firestore property
+  const name=document.getElementById('bf-name').value.trim();
+  const email=document.getElementById('bf-email').value.trim();
+  const phone=document.getElementById('bf-phone').value.trim();
+  const guests=document.getElementById('bf-guests').value;
+  const msg=document.getElementById('bf-msg').value.trim();
+
+  if(!name||!email){
+    alert(lang==='fr'?'Veuillez remplir le nom et l\'email.':'Please fill in your name and email.');
+    return;
+  }
+  if(!checkIn||!checkOut){
+    alert(lang==='fr'?'Veuillez sélectionner vos dates.':'Please select your dates.');
+    return;
+  }
+
+  const btn=document.getElementById('submit-btn');
+  btn.classList.add('loading');
+  btn.innerHTML=`<i class="fas fa-spinner fa-spin"></i> ${lang==='fr'?'Envoi en cours...':'Sending...'}`;
+
+  const n=calcNights(); const total=calcTotal();
+  const aptName=APTS[curApt].name;
+  const months=lang==='fr'?MFR:MEN;
+  const fmt=(d)=>`${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  const ref=`REF-${Date.now()}`;
+
+  // Vérifie si EmailJS est configuré
+  const emailJsConfigured = EMAILJS_PUBLIC_KEY!=='VOTRE_PUBLIC_KEY'
+    && EMAILJS_SERVICE_ID!=='VOTRE_SERVICE_ID'
+    && EMAILJS_TEMPLATE_ID!=='VOTRE_TEMPLATE_ID';
+
+  // Paramètres envoyés dans l'email que VOUS recevez
+  const templateParams={
+    to_email:    OWNER_EMAIL,
+    apt_name:    aptName,
+    check_in:    fmt(checkIn),
+    check_out:   fmt(checkOut),
+    nights:      `${n} nuit${n>1?'s':''}`,
+    guests:      guests,
+    total:       `${total} TND`,
+    client_name: name,
+    client_email:email,
+    client_phone:phone||'Non fourni',
+    client_msg:  msg||'—',
+    ref:         ref,
+  };
+
+  try{
+    if(emailJsConfigured){
+      // ── Envoi via EmailJS ──
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      const result=await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      if(result.status!==200) throw new Error('EmailJS error');
+    } else {
+      // ── Fallback : formsubmit.co (si EmailJS pas encore configuré) ──
+      const formData={
+        _subject:`🏠 Nouvelle Réservation — ${aptName} — ${fmt(checkIn)} → ${fmt(checkOut)}`,
+        'Appartement':          aptName,
+        'Arrivée (Check-in)':   fmt(checkIn),
+        'Départ (Check-out)':   fmt(checkOut),
+        'Nombre de nuits':      `${n} nuit${n>1?'s':''}`,
+        'Nombre de personnes':  guests,
+        'Prix total':           `${total} TND`,
+        'Nom du client':        name,
+        'Email du client':      email,
+        'Téléphone / WhatsApp': phone||'Non fourni',
+        'Message du client':    msg||'—',
+        'Référence':            ref,
+        _replyto:  email,
+        _template: 'table',
+        _captcha:  'false',
+        _next:     'https://hammamet-rental.com',
+      };
+      const res=await fetch(`https://formsubmit.co/ajax/${OWNER_EMAIL}`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(formData)
+      });
+      const json=await res.json();
+      if(json.success!=='true'&&json.success!==true) throw new Error('formsubmit error');
+    }
+
+    // ✅ Succès — marquer les dates en attente et afficher la confirmation
+    const bookingInfo={
+      name,email,phone,guests,total,nights:n,apt:curApt,
+      checkIn:fmt(checkIn),checkOut:fmt(checkOut),
+      checkIn_raw:ds(checkIn),checkOut_raw:ds(checkOut)
+    };
+    markDatesPending(curApt,checkIn,checkOut,bookingInfo);
+    attachBookingToUser(bookingInfo);
+    closeModal('book-modal');
+    showConfirmModal({apt:aptName,checkIn:fmt(checkIn),checkOut:fmt(checkOut),nights:n,total,name,email});
+
+  } catch(e){
+    btn.classList.remove('loading');
+    btn.innerHTML=`<i class="fas fa-paper-plane"></i> ${lang==='fr'?'Confirmer la Réservation':'Confirm Booking'}`;
+
+    // ── Plan B : ouvrir WhatsApp avec tous les détails pré-remplis ──
+    const waMsg=encodeURIComponent(
+      `🏠 *Nouvelle Réservation*\n`+
+      `Appartement : ${aptName}\n`+
+      `Arrivée : ${fmt(checkIn)}\n`+
+      `Départ : ${fmt(checkOut)}\n`+
+      `Nuits : ${n}\n`+
+      `Personnes : ${guests}\n`+
+      `Total : ${total} TND\n`+
+      `Client : ${name}\n`+
+      `Email : ${email}\n`+
+      `Tél : ${phone||'—'}\n`+
+      `Message : ${msg||'—'}\n`+
+      `Réf : ${ref}`
+    );
+    if(confirm(lang==='fr'
+      ?`L'email n'a pas pu être envoyé.\n\nVoulez-vous envoyer les détails de réservation via WhatsApp à la place ?`
+      :`Email could not be sent.\n\nWould you like to send the booking details via WhatsApp instead?`
+    )){
+      window.open(`https://wa.me/${OWNER_WA}?text=${waMsg}`,'_blank');
+      // Marquer quand même les dates en attente
+      const bookingInfoWA={
+        name,email,phone,guests,total,nights:n,apt:curApt,
+        checkIn:fmt(checkIn),checkOut:fmt(checkOut),
+        checkIn_raw:ds(checkIn),checkOut_raw:ds(checkOut)
+      };
+      markDatesPending(curApt,checkIn,checkOut,bookingInfoWA);
+      attachBookingToUser(bookingInfoWA);
+      closeModal('book-modal');
+      showConfirmModal({apt:aptName,checkIn:fmt(checkIn),checkOut:fmt(checkOut),nights:n,total,name,email});
+    }
+  }
+}
+
+async function markDatesPending(apt,start,end,info){
+  if(!db) return;
+  // Write pending dates to Firestore apt_calendar
+  try{
+    const batch=db.batch();
+    let cur=new Date(start);
+    while(cur<end){
+      const dateStr=ds(cur);
+      batch.set(db.collection('apt_calendar').doc('apt_'+apt+'_'+dateStr),{
+        aptIndex:apt, date:dateStr, status:'p', customPrice:null,
+        updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+      });
+      // Update local cache
+      if(!_calCache[apt]) _calCache[apt]={};
+      _calCache[apt][dateStr]={s:'p',p:null};
+      cur.setDate(cur.getDate()+1);
+    }
+    await batch.commit();
+  }catch(e){console.warn('markDatesPending:',e);}
+}
+
+function showConfirmModal(data){
+  const details=document.getElementById('confirm-details');
+  details.innerHTML=Object.entries({
+    [lang==='fr'?'Appartement':'Apartment']:data.apt,
+    [lang==='fr'?'Arrivée':'Check-in']:data.checkIn,
+    [lang==='fr'?'Départ':'Check-out']:data.checkOut,
+    [lang==='fr'?'Nuits':'Nights']:data.nights,
+    [lang==='fr'?'Total':'Total']:`${data.total} TND`,
+    [lang==='fr'?'Nom':'Name']:data.name,
+    Email:data.email,
+  }).map(([k,v])=>`<div class="cd"><span>${k}</span><span>${v}</span></div>`).join('');
+  openModal('confirm-modal');
+}
+
+function closeConfirm(){
+  closeModal('confirm-modal');
+  checkIn=null;checkOut=null;
+  renderPropertyCards();
+}
+
+// ════════════════════════════════════════════
+// MODAL HELPERS
+// ════════════════════════════════════════════
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(id){document.getElementById(id).classList.remove('open');if(!document.querySelector('.modal-ov.open'))document.body.style.overflow=''}
+
+document.querySelectorAll('.modal-ov').forEach(ov=>{
+  ov.addEventListener('click',e=>{if(e.target===ov)closeModal(ov.id)});
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-ov.open').forEach(m=>closeModal(m.id))});
+
+
+// ════════════════════════════════════════════
+// FIREBASE INIT
+// ════════════════════════════════════════════
+const firebaseConfig = {
+  apiKey:            "AIzaSyAh0v1QzO-ZfSrupRXMNo55fzyVaLZ_WG0",
+  authDomain:        "hammamet-rent.firebaseapp.com",
+  projectId:         "hammamet-rent",
+  storageBucket:     "hammamet-rent.firebasestorage.app",
+  messagingSenderId: "670133718792",
+  appId:             "1:670133718792:web:9fed0f73b16a09c38a26bd"
+};
+if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db   = firebase.firestore();
+
+// ════════════════════════════════════════════
+// USER ACCOUNT SYSTEM — Firebase Auth + Firestore
+// ════════════════════════════════════════════
+
+let fbCurrentUser = null;
+
+auth.onAuthStateChanged(user => {
+  fbCurrentUser = user;
+  updateNavUser();
+  if(user && document.getElementById('account-modal')?.classList.contains('open')){
+    renderAccountDashboard();
+  }
+});
+
+function updateNavUser(){
+  const btn=document.getElementById('nav-user-btn');
+  const lbl=document.getElementById('nav-user-label');
+  if(!btn)return;
+  if(fbCurrentUser){
+    btn.classList.add('logged');
+    const name=fbCurrentUser.displayName||fbCurrentUser.email.split('@')[0];
+    if(lbl)lbl.textContent=name.split(' ')[0];
+  } else {
+    btn.classList.remove('logged');
+    if(lbl)lbl.textContent=lang==='fr'?'Mon Compte':'My Account';
+  }
+}
+
+function openUserPanel(){
+  if(fbCurrentUser){renderAccountDashboard();openModal('account-modal');}
+  else{switchAuthTab('login');openModal('auth-modal');}
+}
+
+function switchAuthTab(tab){
+  document.getElementById('login-panel').style.display  =tab==='login'?'block':'none';
+  document.getElementById('register-panel').style.display=tab==='register'?'block':'none';
+  document.getElementById('tab-login').classList.toggle('active',tab==='login');
+  document.getElementById('tab-register').classList.toggle('active',tab==='register');
+  document.getElementById('login-err').classList.remove('show');
+  document.getElementById('reg-err').classList.remove('show');
+}
+
+async function doSignIn(){
+  const email=document.getElementById('li-email').value.trim();
+  const pw=document.getElementById('li-pw').value;
+  const errEl=document.getElementById('login-err');
+  errEl.classList.remove('show');
+  if(!email||!pw){errEl.textContent=lang==='fr'?'Veuillez remplir tous les champs.':'Please fill all fields.';errEl.classList.add('show');return;}
+  try{
+    await auth.signInWithEmailAndPassword(email,pw);
+    closeModal('auth-modal');
+    renderAccountDashboard();
+    openModal('account-modal');
+  }catch(e){
+    const wrong=e.code==='auth/wrong-password'||e.code==='auth/user-not-found'||e.code==='auth/invalid-credential';
+    errEl.textContent=lang==='fr'
+      ?(wrong?'Email ou mot de passe incorrect.':'Erreur de connexion : '+e.message)
+      :(wrong?'Incorrect email or password.':'Sign-in error: '+e.message);
+    errEl.classList.add('show');
+  }
+}
+
+async function doRegister(){
+  const name=document.getElementById('reg-name').value.trim();
+  const email=document.getElementById('reg-email').value.trim();
+  const pw=document.getElementById('reg-pw').value;
+  const errEl=document.getElementById('reg-err');
+  errEl.classList.remove('show');
+  if(!name||!email||!pw){errEl.textContent=lang==='fr'?'Veuillez remplir tous les champs.':'Please fill all fields.';errEl.classList.add('show');return;}
+  if(pw.length<6){errEl.textContent=lang==='fr'?'Mot de passe : 6 caractères minimum.':'Password must be 6+ characters.';errEl.classList.add('show');return;}
+  try{
+    const cred=await auth.createUserWithEmailAndPassword(email,pw);
+    await cred.user.updateProfile({displayName:name});
+    await db.collection('users').doc(cred.user.uid).set({
+      name,email,createdAt:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    closeModal('auth-modal');
+    renderAccountDashboard();
+    openModal('account-modal');
+  }catch(e){
+    errEl.textContent=lang==='fr'
+      ?(e.code==='auth/email-already-in-use'?'Un compte existe déjà avec cet email.':'Erreur : '+e.message)
+      :(e.code==='auth/email-already-in-use'?'Email already in use.':'Error: '+e.message);
+    errEl.classList.add('show');
+  }
+}
+
+async function doSignOut(){
+  await auth.signOut();
+  closeModal('account-modal');
+}
+
+async function attachBookingToUser(bookingData){
+  try{
+    // Apartment name: use explicit name if provided, else look up hardcoded APTS
+    const aptName = bookingData.apartment
+      || (bookingData.apt>=0 ? APTS[bookingData.apt]?.name : null)
+      || 'Appartement';
+
+    const docRef=await db.collection('reservations').add({
+      name:              bookingData.name,
+      email:             bookingData.email,
+      phone:             bookingData.phone||'',
+      apartment:         aptName,
+      aptIndex:          bookingData.apt,
+      propertyId:        bookingData.propertyId||null,   // Firestore property ID
+      hostId:            bookingData.hostId||null,        // Partner's UID
+      checkIn:           bookingData.checkIn_raw||'',
+      checkOut:          bookingData.checkOut_raw||'',
+      checkInFormatted:  bookingData.checkIn,
+      checkOutFormatted: bookingData.checkOut,
+      nights:            bookingData.nights,
+      guests:            bookingData.guests||'',
+      total:             bookingData.total,
+      status:            'pending',
+      userId:            fbCurrentUser?fbCurrentUser.uid:null,
+      createdAt:         firebase.firestore.FieldValue.serverTimestamp()
+    });
+    return docRef.id;
+  }catch(e){console.error('Firestore write error:',e);return null;}
+}
+
+async function cancelReservation(docId){
+  if(!confirm(lang==='fr'?'Voulez-vous vraiment annuler cette réservation ?':'Cancel this booking?'))return;
+  try{
+    await db.collection('reservations').doc(docId).update({status:'cancelled'});
+    renderAccountDashboard();
+  }catch(e){
+    alert(lang==='fr'?'Erreur lors de l annulation.':'Cancellation error.');
+  }
+}
+
+async function renderAccountDashboard(){
+  if(!fbCurrentUser){closeModal('account-modal');openModal('auth-modal');return;}
+  document.getElementById('acm-user-info').textContent=fbCurrentUser.email;
+
+  const container=document.getElementById('acm-reservations');
+  container.innerHTML=`<div style="text-align:center;padding:2rem;color:var(--mid);font-size:.85rem"><i class="fas fa-spinner fa-spin"></i> ${lang==='fr'?'Chargement...':'Loading...'}</div>`;
+  document.getElementById('acm-total').textContent='…';
+  document.getElementById('acm-pending').textContent='…';
+  document.getElementById('acm-confirmed').textContent='…';
+
+  try{
+    const snap=await db.collection('reservations')
+      .where('userId','==',fbCurrentUser.uid)
+      .orderBy('createdAt','desc')
+      .get();
+    const reservations=snap.docs.map(d=>({id:d.id,...d.data()}));
+
+    document.getElementById('acm-total').textContent=reservations.length;
+    document.getElementById('acm-pending').textContent=reservations.filter(r=>r.status==='pending').length;
+    document.getElementById('acm-confirmed').textContent=reservations.filter(r=>r.status==='confirmed').length;
+
+    if(!reservations.length){
+      container.innerHTML=`<div class="res-empty">
+        <i class="fas fa-calendar-times"></i>
+        <p>${lang==='fr'?'Aucune réservation pour le moment.':'No bookings yet.'}</p>
+        <button onclick="closeModal('account-modal');document.getElementById('properties').scrollIntoView({behavior:'smooth'})"
+          style="background:var(--navy);color:#fff;border:none;padding:.7rem 1.8rem;border-radius:4px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif">
+          ${lang==='fr'?'Voir les appartements':'View apartments'}
+        </button></div>`;
+      return;
+    }
+
+    const statusLabel={
+      pending:  lang==='fr'?'⏳ En attente':'⏳ Pending',
+      confirmed:lang==='fr'?'✓ Confirmée':'✓ Confirmed',
+      cancelled:lang==='fr'?'✕ Annulée':'✕ Cancelled'
+    };
+
+    container.innerHTML=reservations.map(res=>{
+      const created=res.createdAt?.toDate?res.createdAt.toDate().toLocaleDateString(lang==='fr'?'fr-FR':'en-GB'):'';
+      return `<div class="res-card ${res.status}">
+        <div>
+          <div class="res-apt">${res.apartment}</div>
+          <div class="res-dates"><i class="fas fa-calendar"></i> ${res.checkInFormatted||res.checkIn} → ${res.checkOutFormatted||res.checkOut}</div>
+          <div class="res-meta">🌙 ${res.nights} nuit${res.nights>1?'s':''} &nbsp;·&nbsp; 💰 ${res.total} TND${res.guests?' &nbsp;·&nbsp; 👥 '+res.guests+' pers.':''}</div>
+          <div style="margin-top:.4rem"><span class="res-status ${res.status}">${statusLabel[res.status]||res.status}</span></div>
+        </div>
+        <div class="res-actions">
+          <div style="font-size:.65rem;color:var(--mid)">${created}</div>
+          ${res.status==='pending'?`<button class="btn-cancel-res" onclick="cancelReservation('${res.id}')"><i class="fas fa-times"></i> ${lang==='fr'?'Annuler':'Cancel'}</button>`:''}
+          ${res.status==='confirmed'?`<span style="font-size:.72rem;color:var(--green)"><i class="fas fa-check-circle"></i> ${lang==='fr'?'Confirmée':'Confirmed'}</span>`:''}
+        </div>
+      </div>`;
+    }).join('');
+  }catch(e){
+    container.innerHTML=`<div style="color:var(--red);padding:1rem;font-size:.85rem">
+      ${lang==='fr'?'Erreur de chargement.':'Loading error.'} (${e.code||e.message})
+    </div>`;
+    console.error('Firestore read error:',e);
+  }
+}
+
+
+// Admin → page séparée : admin.html
+
+// ════════════════════════════════════════════
+// PARTNER PROPERTIES — Load from Firestore
+// ════════════════════════════════════════════
+let _firestoreProps = [];
+let _curFsProp = null;
+let _fsBookedDates = []; // dates blocked by reservations on current FS property
+
+async function loadFirestoreProps(){
+  try{
+    // Load all properties (active + those without explicit active field)
+    const snap = await db.collection('properties').get();
+    _firestoreProps = snap.docs
+      .map(d=>({id:d.id,...d.data()}))
+      .filter(p=>p.active !== false); // show all except explicitly disabled
+    if(_firestoreProps.length) renderFirestoreCards();
+  }catch(e){ console.warn('loadFirestoreProps:',e); }
+}
+
+function renderFirestoreCards(){
+  const grid = document.getElementById('props-grid');
+  if(!grid || !_firestoreProps.length) return;
+
+  const sep = document.createElement('div');
+  sep.style.cssText = 'grid-column:1/-1;padding:.5rem 0 .2rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);display:flex;align-items:center;gap:.7rem';
+  sep.innerHTML = '<i class="fas fa-handshake"></i> Biens partenaires';
+  grid.appendChild(sep);
+
+  _firestoreProps.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'prop-card fi';
+    card.onclick = ()=>_openFsPropModal(p);
+
+    const imgs = p.images||[];
+    const imgHtml = imgs[0]
+      ? `<img src="${imgs[0]}" alt="${p.title}">`
+      : `<div class="prop-img-ph"><i class="fas fa-camera"></i><span>${lang==='fr'?'Photos à venir':'Photos coming soon'}</span></div>`;
+
+    const tags = (p.amenities||[]).slice(0,4).map(a=>`<span class="ptag"><i class="fas fa-check"></i>${a}</span>`).join('');
+
+    card.innerHTML = `
+      <div class="prop-img">
+        ${imgHtml}
+        <div class="p-badge" style="background:var(--teal)">${lang==='fr'?'Partenaire':'Partner'}</div>
+      </div>
+      <div class="prop-body">
+        <div class="p-zone" style="color:var(--teal)">${p.location||'Hammamet'}</div>
+        <h3 class="p-name">${p.title}</h3>
+        <div class="p-loc"><i class="fas fa-map-marker-alt"></i><span>${p.address||p.location||''}</span></div>
+        <p class="p-desc">${(p.description||'').substring(0,115)}...</p>
+        <div class="p-tags">${tags}</div>
+        <div class="p-foot">
+          <div>
+            <div class="p-price"><span class="amt">${p.basePrice||'—'}</span><span class="per"> TND/${lang==='fr'?'nuit':'night'}</span></div>
+            <div class="p-cap">
+              <span><i class="fas fa-bed"></i>${p.beds||'—'}</span>
+              <span><i class="fas fa-bath"></i>${p.baths||'—'}</span>
+              <span><i class="fas fa-users"></i>${p.guests||'—'}</span>
+            </div>
+          </div>
+          <button class="btn-detail" onclick="event.stopPropagation();_openFsPropModal(this._p)" style="background:var(--teal)">
+            <i class="fas fa-eye"></i>${lang==='fr'?'Voir':'View'}
+          </button>
+        </div>
+      </div>`;
+    card.querySelector('.btn-detail')._p = p;
+    grid.appendChild(card);
+    setTimeout(()=>card.classList.add('in'),100);
+  });
+}
+
+// Open detail modal for Firestore property
+function _openFsPropModal(p){
+  _curFsProp = p;
+  const imgs = p.images||[];
+
+  // Use shared gallery engine
+  galleryIdx=0;
+  initGallery(imgs, 0);
+
+  document.getElementById('pm-badge').textContent = lang==='fr'?'Partenaire':'Partner';
+  document.getElementById('pm-badge').style.background = 'var(--teal)';
+  document.getElementById('pm-title').textContent = p.title;
+  document.getElementById('pm-score').textContent = '★ New';
+  document.getElementById('pm-loc').textContent = p.location||'Hammamet';
+  document.getElementById('pm-beds').textContent = (p.beds||'—')+' '+(lang==='fr'?'chambre(s)':'bedroom(s)');
+  document.getElementById('pm-baths').textContent = (p.baths||'—')+' '+(lang==='fr'?'salle(s) de bain':'bathroom(s)');
+  document.getElementById('pm-guests').textContent = (p.guests||'—')+' '+(lang==='fr'?'personnes max.':'guests max.');
+  document.getElementById('pm-desc').textContent = p.description||'';
+  document.getElementById('pm-price-disp').textContent = p.basePrice||'—';
+  document.getElementById('pm-amenities').innerHTML = (p.amenities||[]).map(a=>`<div class="pm-am"><i class="fas fa-check" style="color:var(--teal)"></i>${a}</div>`).join('');
+
+  openModal('prop-modal');
+}
+
+// Firestore property booking helpers
+function _getFsPrice(p,date){
+  const m=date.getMonth();
+  if((m===6||m===7)&&p.peakPrice) return p.peakPrice;
+  return p.basePrice||0;
+}
+
+async function _openFsBookingModal(){
+  const p=_curFsProp;
+  closeModal('prop-modal');
+  checkIn=null;checkOut=null;hoverDate=null;
+  _fsBookedDates=[];
+  calY=new Date().getFullYear();calM=new Date().getMonth();
+  document.getElementById('bm-apt-name').textContent=p.title;
+  document.getElementById('dsi-in').textContent=lang==='fr'?'Cliquez une date':'Click a date';
+  document.getElementById('dsi-out').textContent='—';
+  document.getElementById('price-summary').style.display='none';
+  document.getElementById('bform-section').style.display='none';
+  document.getElementById('cal-err').classList.remove('show');
+  openModal('book-modal');
+  // Load booked/blocked dates from Firestore (reservations + partner-blocked availability)
+  try{
+    if(db){
+      const [resSnap, availSnap] = await Promise.all([
+        db.collection('reservations').where('propertyId','==',p.id).get(),
+        db.collection('availability').where('propertyId','==',p.id).get()
+      ]);
+      // From reservations (pending + confirmed)
+      resSnap.docs.forEach(d=>{
+        const r=d.data();
+        if(r.status==='cancelled')return;
+        if(!r.checkIn||!r.checkOut)return;
+        let cur=new Date(r.checkIn);
+        const end=new Date(r.checkOut);
+        while(cur<end){_fsBookedDates.push(ds(cur));cur.setDate(cur.getDate()+1);}
+      });
+      // From availability (partner-blocked dates)
+      availSnap.docs.forEach(d=>{
+        const a=d.data();
+        if(a.date && !_fsBookedDates.includes(a.date)) _fsBookedDates.push(a.date);
+      });
+    }
+  }catch(e){console.warn('Load booked dates:',e);}
+  _renderFsCal();
+}
+
+function _renderFsCal(){
+  const p=_curFsProp;
+  const months=lang==='fr'?MFR:MEN;
+  const days=lang==='fr'?DFR:DEN;
+  const today=new Date();today.setHours(0,0,0,0);
+  document.getElementById('cal-t1').textContent=`${months[calM]} ${calY}`;
+  let m2=calM+1,y2=calY;if(m2>11){m2=0;y2++;}
+  document.getElementById('cal-t2').textContent=`${months[m2]} ${y2}`;
+  ['cal-dh1','cal-dh2'].forEach(id=>{document.getElementById(id).innerHTML=days.map(d=>`<div class="cal-dh">${d}</div>`).join('');});
+  _renderFsMonth('cal-m1',calY,calM,today);
+  _renderFsMonth('cal-m2',y2,m2,today);
+}
+
+function _renderFsMonth(containerId,year,month,today){
+  const p=_curFsProp;
+  const container=document.getElementById(containerId);container.innerHTML='';
+  let dow=new Date(year,month,1).getDay();dow=dow===0?6:dow-1;
+  const dim=new Date(year,month+1,0).getDate();
+  for(let i=0;i<dow;i++){const e=document.createElement('div');e.className='dc dc-empty';container.appendChild(e);}
+  for(let day=1;day<=dim;day++){
+    const date=new Date(year,month,day);
+    const dateStr=ds(date);
+    const price=_getFsPrice(p,date);
+    const isPast=date<today;
+    const isToday=dateStr===ds(today);
+    const isBooked=_fsBookedDates.includes(dateStr); // ← check Firestore reservations
+    const cell=document.createElement('div');
+    cell._date=date;cell._dateStr=dateStr;cell._isPast=isPast;cell._isToday=isToday;cell._price=price;
+    cell._status=isBooked?'b':'free'; // 'b' = booked → dc-booked class via applyDayClass
+    if(isBooked){
+      cell.innerHTML=`<div class="dc-n">${day}</div><div class="dc-booked-x">✕</div>`;
+    } else {
+      cell.innerHTML=`<div class="dc-n">${day}</div>${!isPast?`<div class="dc-p">${price} TND</div>`:''}`;
+    }
+    applyDayClass(cell);
+    if(!isPast&&!isBooked){
+      cell.addEventListener('click',()=>{
+        document.getElementById('cal-err').classList.remove('show');
+        if(!checkIn||(checkIn&&checkOut)){checkIn=date;checkOut=null;hoverDate=null;document.getElementById('price-summary').style.display='none';document.getElementById('bform-section').style.display='none';document.getElementById('confirm-dates-wrap').style.display='none';}
+        else if(date<=checkIn){checkIn=date;checkOut=null;hoverDate=null;}
+        else{
+          // Check no booked date in range
+          let hasBk=false,tmp=new Date(checkIn);tmp.setDate(tmp.getDate()+1);
+          while(tmp<date){if(_fsBookedDates.includes(ds(tmp))){hasBk=true;break;}tmp.setDate(tmp.getDate()+1);}
+          if(hasBk){document.getElementById('cal-err').classList.add('show');return;}
+          checkOut=date;hoverDate=null;
+        }
+        _updateFsDayClasses();_updateFsDateDisplay();
+      });
+      cell.addEventListener('mouseenter',()=>{if(checkIn&&!checkOut){hoverDate=cell._date;_updateFsDayClasses();}});
+      cell.addEventListener('mouseleave',()=>{if(checkIn&&!checkOut&&hoverDate){hoverDate=null;_updateFsDayClasses();}});
+    }
+    container.appendChild(cell);
+  }
+}
+
+function _updateFsDayClasses(){
+  ['cal-m1','cal-m2'].forEach(id=>{const c=document.getElementById(id);if(c)c.querySelectorAll('.dc:not(.dc-empty)').forEach(cell=>applyDayClass(cell));});
+  _updateFsDateDisplay();
+}
+
+function _updateFsDateDisplay(){
+  const fmt=d=>{if(!d)return'—';const months=lang==='fr'?MFR:MEN;return`${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;};
+  document.getElementById('dsi-in').textContent=checkIn?fmt(checkIn):(lang==='fr'?'Cliquez une date':'Click a date');
+  document.getElementById('dsi-out').textContent=checkOut?fmt(checkOut):(checkIn?(lang==='fr'?'Cliquez la date de départ':'Click checkout date'):'—');
+  const wrap=document.getElementById('confirm-dates-wrap');
+  if(wrap)wrap.style.display=(checkIn&&checkOut)?'flex':'none';
+}
+
+function _confirmFsDates(){
+  if(!checkIn||!checkOut)return;
+  const p=_curFsProp;
+  const n=Math.round((checkOut-checkIn)/86400000);
+  let total=0,d=new Date(checkIn);
+  for(let i=0;i<n;i++){total+=_getFsPrice(p,d);d.setDate(d.getDate()+1);}
+  document.getElementById('ps-nights').textContent=n;
+  document.getElementById('ps-avg').textContent=Math.round(total/n);
+  document.getElementById('ps-total').textContent=total;
+  document.getElementById('price-summary').style.display='block';
+  document.getElementById('bform-section').style.display='block';
+  const form=document.getElementById('bform-section');
+  if(form)setTimeout(()=>form.scrollIntoView({behavior:'smooth',block:'start'}),100);
+}
+
+async function _submitFsBooking(){
+  const p=_curFsProp;
+  const name=document.getElementById('bf-name').value.trim();
+  const email=document.getElementById('bf-email').value.trim();
+  const phone=document.getElementById('bf-phone').value.trim();
+  const guests=document.getElementById('bf-guests').value;
+  if(!name||!email){alert(lang==='fr'?'Veuillez remplir le nom et l\'email.':'Please fill name and email.');return;}
+  if(!checkIn||!checkOut){alert(lang==='fr'?'Veuillez sélectionner vos dates.':'Please select dates.');return;}
+
+  const btn=document.getElementById('submit-btn');
+  btn.classList.add('loading');
+  btn.innerHTML=`<i class="fas fa-spinner fa-spin"></i> ${lang==='fr'?'Envoi...':'Sending...'}`;
+
+  const months=lang==='fr'?MFR:MEN;
+  const fmt=d=>`${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  const n=Math.round((checkOut-checkIn)/86400000);
+  let total=0,dd=new Date(checkIn);
+  for(let i=0;i<n;i++){total+=_getFsPrice(p,dd);dd.setDate(dd.getDate()+1);}
+
+  const bookingData={
+    name,email,phone,guests,
+    apt:-1,
+    apartment:p.title,
+    propertyId:p.id,
+    hostId:p.hostId||null,
+    checkIn_raw:ds(checkIn),checkOut_raw:ds(checkOut),
+    checkIn:fmt(checkIn),checkOut:fmt(checkOut),
+    nights:n,total
+  };
+
+  try{
+    await attachBookingToUser(bookingData);
+    btn.classList.remove('loading');
+    btn.innerHTML=`<i class="fas fa-paper-plane"></i> ${lang==='fr'?'Confirmer la Réservation':'Confirm Booking'}`;
+    closeModal('book-modal');
+    showConfirmModal({apt:p.title,checkIn:fmt(checkIn),checkOut:fmt(checkOut),nights:n,total,name,email});
+    _curFsProp=null;
+  }catch(e){
+    btn.classList.remove('loading');
+    btn.innerHTML=`<i class="fas fa-paper-plane"></i> ${lang==='fr'?'Confirmer la Réservation':'Confirm Booking'}`;
+    alert('Erreur: '+e.message);
+  }
+}
+
+// ════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', async ()=>{
+  // 1. Load apt images from Firestore into cache
+  await loadAptImagesFromFirestore();
+  // 2. Render hardcoded apartments (with images from cache)
+  renderPropertyCards();
+  // 3. Load and append partner properties
+  await loadFirestoreProps();
+});
+
+
+</script>
+</body>
+</html>
